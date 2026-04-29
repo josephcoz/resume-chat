@@ -1,17 +1,14 @@
-// Cloudflare Pages Function: /api/chat
-//
-// Recruiter-facing chat endpoint. Streams Llama 3.3 70B from Cloudflare
+// Recruiter-facing chat handler. Streams Llama 3.3 70B from Cloudflare
 // Workers AI, grounded in a hand-curated context bundle and a strict
 // system prompt. Output is filtered chunk-by-chunk against a blocklist
 // of names and money patterns before forwarding to the client — the
 // model never has those in context, but this is belt-and-suspenders.
 
-import publicBundle from '../../context/joe-public.json';
+import publicBundle from '../context/joe-public.json';
 import { SYSTEM_PROMPT as systemPromptText } from './_systemPrompt';
 
-interface Env {
+interface ChatEnv {
   AI: Ai;
-  RATE_LIMITER?: { limit: (args: { key: string }) => Promise<{ success: boolean }> };
 }
 
 const MODEL = '@cf/meta/llama-3.3-70b-instruct-fp8-fast';
@@ -88,10 +85,6 @@ function detectViolation(text: string): string | null {
   return null;
 }
 
-function clientIp(request: Request): string {
-  return request.headers.get('cf-connecting-ip') || 'unknown';
-}
-
 function jsonResponse(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
     status,
@@ -99,18 +92,7 @@ function jsonResponse(body: unknown, status = 200): Response {
   });
 }
 
-export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
-  // Rate limit (best-effort — only if binding is configured).
-  if (env.RATE_LIMITER) {
-    const { success } = await env.RATE_LIMITER.limit({ key: clientIp(request) });
-    if (!success) {
-      return jsonResponse(
-        { error: 'rate_limited', message: 'Too many messages. Please slow down.' },
-        429,
-      );
-    }
-  }
-
+export async function handleChat(request: Request, env: ChatEnv): Promise<Response> {
   let body: { messages?: Array<{ role: string; content: string }> };
   try {
     body = await request.json();
@@ -154,7 +136,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       'connection': 'keep-alive',
     },
   });
-};
+}
 
 function filterStream(input: ReadableStream): ReadableStream {
   const decoder = new TextDecoder();
@@ -216,8 +198,3 @@ function filterStream(input: ReadableStream): ReadableStream {
     },
   });
 }
-
-export const onRequest: PagesFunction<Env> = async (ctx) => {
-  if (ctx.request.method === 'POST') return onRequestPost(ctx);
-  return new Response('Method not allowed', { status: 405 });
-};

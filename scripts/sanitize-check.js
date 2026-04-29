@@ -8,7 +8,7 @@ const path = require('node:path');
 
 const BUNDLE_PATH = path.join(__dirname, '..', 'context', 'joe-public.json');
 const PROMPT_PATH = path.join(__dirname, '..', 'context', 'system-prompt.md');
-const PROMPT_TS_PATH = path.join(__dirname, '..', 'functions', 'api', '_systemPrompt.ts');
+const PROMPT_TS_PATH = path.join(__dirname, '..', 'src', '_systemPrompt.ts');
 
 // ---- Blocklists ----------------------------------------------------------
 

@@ -1,8 +1,15 @@
 name = "resume-chat"
+main = "src/index.ts"
 compatibility_date = "2026-01-15"
-pages_build_output_dir = "./public"
+compatibility_flags = ["nodejs_compat"]
 
-# Workers AI binding — gives the Pages Function access to env.AI.run().
+# Static assets — the chat UI lives here, served by env.ASSETS.fetch().
+[assets]
+directory = "./public"
+binding = "ASSETS"
+not_found_handling = "404-page"
+
+# Workers AI binding — gives the Worker access to env.AI.run().
 # No API key needed; auth is via the binding.
 [ai]
 binding = "AI"

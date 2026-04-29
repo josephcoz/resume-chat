@@ -11,5 +11,5 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["functions/**/*.ts", "context/**/*.json"]
+  "include": ["src/**/*.ts", "context/**/*.json"]
 }

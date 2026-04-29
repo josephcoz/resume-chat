@@ -1,0 +1,17 @@
+{
+  "name": "resume-chat",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Recruiter-facing chat over a sanitized summary of Joe Cosby-Johnson's resume.",
+  "scripts": {
+    "lint": "node scripts/sanitize-check.js",
+    "dev": "npm run lint && wrangler pages dev",
+    "deploy": "npm run lint && wrangler pages deploy",
+    "build": "npm run lint"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260101.0",
+    "typescript": "^6.0.3",
+    "wrangler": "^3.90.0"
+  }
+}

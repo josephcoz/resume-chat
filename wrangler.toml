@@ -1,0 +1,16 @@
+name = "resume-chat"
+compatibility_date = "2026-01-15"
+pages_build_output_dir = "./public"
+
+# Workers AI binding — gives the Pages Function access to env.AI.run().
+# No API key needed; auth is via the binding.
+[ai]
+binding = "AI"
+
+# Per-IP rate limit. Workers Rate Limiting binding (GA).
+# 10 messages per 60s per client IP.
+[[unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1001"
+simple = { limit = 10, period = 60 }

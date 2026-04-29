@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Chat with an AI assistant that knows Joe Cosby-Johnson's professional background. Ask about his RevOps experience, tools, and what he's looking for next." />
+  <meta name="robots" content="index,follow" />
+  <title>Chat with Joe's resume — Joe Cosby-Johnson</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-name">Joe Cosby-Johnson</span>
+        <span class="brand-tag">Statistician-turned-RevOps operator</span>
+      </div>
+      <nav class="topbar-links">
+        <a href="/joe-cj-resume.pdf" target="_blank" rel="noopener">Resume PDF</a>
+        <a href="https://linkedin.com/in/joe-cosby-johnson" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:josephcoz@gmail.com">Email</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="chat">
+    <div class="chat-intro">
+      <h1>Chat with Joe's resume</h1>
+      <p>
+        I'm an AI assistant that knows Joe's professional background. Ask me anything
+        about his experience, technical depth, or what he's looking for next.
+        For numbers and names, you'll want to reach out to Joe directly.
+      </p>
+      <div class="suggestions" id="suggestions">
+        <button class="suggestion" data-q="Tell me about Joe.">Tell me about Joe.</button>
+        <button class="suggestion" data-q="What tools and stack does he use day-to-day?">What's his stack?</button>
+        <button class="suggestion" data-q="Tell me about a recent project.">Recent project example</button>
+        <button class="suggestion" data-q="What kind of role is Joe looking for?">What's he looking for?</button>
+      </div>
+    </div>
+
+    <div class="messages" id="messages" aria-live="polite"></div>
+
+    <form class="composer" id="composer">
+      <textarea
+        id="input"
+        rows="1"
+        placeholder="Ask about Joe's background…"
+        autocomplete="off"
+      ></textarea>
+      <button type="submit" id="send" aria-label="Send">↑</button>
+    </form>
+
+    <p class="footnote">
+      This chatbot is grounded in a curated summary Joe prepared for recruiters.
+      It will decline to discuss compensation, specific customers, or coworker
+      names — those are conversations to have with Joe directly.
+    </p>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

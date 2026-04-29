@@ -1,13 +1,15 @@
 {
   "name": "Joe Cosby-Johnson",
-  "tagline": "Statistician-turned-RevOps operator",
+  "tagline": "Statistician-turned-RevOps operator who ships agentic workflows in Python and Claude Code",
   "tenure": "5 years in Revenue Operations",
   "contact": {
     "email": "josephcoz@gmail.com",
     "linkedin": "linkedin.com/in/joe-cosby-johnson",
     "resume_pdf_url": "/joe-cj-resume.pdf"
   },
-  "summary": "Statistician-turned-RevOps operator. Builds the dashboards, margin models, and deal-desk frameworks that help GTM leaders decide what to invest in, what to price up, and what to walk away from — and automates the recurring work with Python and Claude Code.",
+
+  "summary": "Statistician-turned-RevOps operator. Joe builds the dashboards, margin models, and deal-desk frameworks GTM leaders use to decide what to invest in, what to price up, and what to walk away from — and ships production-grade Python + Claude Code agentic workflows so the recurring work runs itself. He owns weekly forecasting, executive variance narratives, comp-plan design, and the AI/automation layer wired into the operating cadence.",
+
   "experience": [
     {
       "company": "Workstream",
@@ -15,40 +17,44 @@
       "location": "Lehi, UT (remote-eligible)",
       "role": "Sales Strategy & Ops Manager (promoted from GTM Strategy & Ops Analyst)",
       "dates": "Apr 2024 – Present",
-      "scope": "Operator-level RevOps. Scope spans CRO forecasting, deal desk, comp-plan design, and the agentic-AI automation layer.",
+      "scope": "Operator-level RevOps at a startup. Sole owner of the GTM data layer across Sales, Marketing, and CS, plus the AI/automation infrastructure wired into the executive cadence. Greenfield ownership: no playbook on arrival.",
       "highlights": [
-        "Built and owns executive dashboards in Hex, Tableau, and Snowflake tracking forecast vs. actuals, pipeline health, account-level gross margin, and renewal risk for weekly CEO/CRO/CFO revenue reviews.",
-        "Runs weekly revenue forecasting and variance analysis across Marketing, Sales, and Customer Success; translates findings into executive-ready narratives and strategic recommendations.",
-        "Built an account-level gross-margin model and deal-desk qualification framework guiding pricing, renewal, and go/no-go decisions; designed segmented price-increase programs to protect unit economics at scale.",
-        "Owns sales comp-plan design and execution with Finance and Sales leadership; built Python + Claude Code automation for commission calculation, contract classification, and recurring anomaly reporting."
+        "Built and owns executive dashboards in Hex, Tableau, and Snowflake tracking forecast vs. actuals, pipeline health, account-level gross margin, and renewal risk for weekly CEO/CRO/CFO reviews and quarterly board updates.",
+        "Runs weekly revenue forecasting and variance analysis across Sales, Marketing, and Customer Success; translates findings into executive-ready narratives.",
+        "Built an account-level gross-margin model and deal-desk qualification framework that turn renewal-risk and margin signals into codified action protocols guiding pricing, renewal, and go/no-go calls. Designed segmented price-increase programs to protect unit economics at scale.",
+        "Owns sales comp-plan design and quota structures with Finance and Sales leadership.",
+        "Built production-grade Python + Claude Code agentic workflows for commission calculation, contract classification, and recurring anomaly reporting — replacing manual end-of-month grinds with one-command runs and reducing reliance on vendor tooling.",
+        "Designed lead-routing, account-research, and forecasting automations across the GTM stack; partnered with Engineering on integrations between Salesforce, billing, and BI.",
+        "Owns his own AI context layer: maintains custom Claude Code skills, prompts, and an MCP-backed memory system that turns each analysis into a reusable artifact for the next one."
       ]
     },
     {
       "company": "Qualtrics",
-      "company_about": "Experience-management software (CX, EX, Brand, Product). Public company.",
+      "company_about": "Public experience-management software company (CX, EX, Brand, Product). Was ~5,000 people during Joe's tenure and went through hypergrowth and IPO.",
       "location": "Provo, UT",
       "role": "Revenue Operations Senior Analyst (promoted from Specialist)",
       "dates": "Apr 2022 – Apr 2024",
-      "scope": "Promoted Specialist → Senior Analyst. Owned the weekly global pipeline forecast for the CRO and the strategic dashboards behind go-to-market.",
+      "scope": "Promoted Specialist → Senior Analyst inside a 5,000-person SaaS org going through hypergrowth and an IPO. Owned the weekly global pipeline forecast for the CRO and the strategic dashboards behind go-to-market.",
       "highlights": [
-        "Built and managed executive Tableau dashboards for Sales, Marketing, and Corporate Strategy — competitive intelligence, win rates, SAM/TAM, and sales performance for a major product line.",
-        "Conducted 150+ ad-hoc analyses across pipeline conversion, account prioritization, pricing, nonstandard deal cycles, and rep productivity.",
-        "Owned weekly global pipeline forecast delivered directly to the CRO — covering hundreds of reps across industries and regions — concentrating executive attention on the highest-value motions."
+        "Owned weekly global pipeline forecast delivered directly to the CRO — covering ~900 reps across industries and regions — concentrating executive attention on the highest-value motions.",
+        "Built and managed executive Tableau dashboards for Sales, Marketing, and Corporate Strategy: competitive intelligence, win rates, SAM/TAM, and sales performance for a major product line.",
+        "Conducted 150+ ad-hoc analyses across pipeline conversion, account prioritization, pricing, nonstandard deal cycles, and rep productivity — sharpened the prompt-and-iterate muscle now applied to AI workflows."
       ]
     },
     {
       "company": "Posit, PBC",
-      "company_about": "Formerly RStudio. Makers of the RStudio IDE and the Posit data-science platform.",
+      "company_about": "Formerly RStudio. Makers of the RStudio IDE and the Posit data-science platform — sells to data scientists and ML engineers.",
       "location": "Remote",
       "role": "Customer Success Associate",
       "dates": "Feb 2021 – Mar 2022",
-      "scope": "Joined the makers of RStudio out of school to stay close to R and data science; learned enterprise SaaS from the customer-facing seat.",
+      "scope": "Joined the makers of RStudio out of school to stay close to R and data science; learned enterprise SaaS from the customer-facing seat — and how to operate alongside highly technical end users without losing credibility.",
       "highlights": [
-        "Managed a portfolio of 250+ customer accounts; negotiated renewals, surfaced churn risk, translated technical R/Python use cases into commercial outcomes.",
-        "Built live demos of R workflows (Shiny, API deployment, ETL, environment management) — sharpened the technical-to-commercial translation that carried into later RevOps work."
+        "Managed a portfolio of 250+ customer accounts; negotiated renewals, surfaced churn risk, translated technical R/Python use cases into commercial outcomes for engineer-buyer audiences.",
+        "Built live demos of R workflows (Shiny, API deployment, ETL, environment management) — the same craft-as-authority muscle now applied to driving AI workflow adoption across GTM teams."
       ]
     }
   ],
+
   "education": {
     "school": "Brigham Young University",
     "degree": "BS Statistics — Applied Stats and Analytics",
@@ -68,149 +74,143 @@
       }
     ]
   },
+
   "stack": {
-    "languages": [
-      "SQL",
-      "Python",
-      "R",
-      "Bash",
-      "JavaScript"
-    ],
-    "data_and_bi": [
-      "Snowflake",
-      "Hex",
-      "Tableau",
-      "Google Sheets"
-    ],
-    "gtm_tooling": [
-      "Salesforce",
-      "Outreach",
-      "DocuSign",
-      "ZoomInfo",
-      "Apollo"
-    ],
-    "automation_and_ai": [
+    "agentic_and_ai": [
       "Claude Code (daily driver for production-grade agentic workflows)",
+      "Custom Claude skills (e.g., Hex notebooks, Google Slides building)",
+      "Custom prompts and prompt engineering",
+      "MCP servers (Model Context Protocol)",
+      "MCP-backed memory system / personal knowledge graph",
       "Python (pandas, scenario modeling, data engineering)",
-      "dbt",
-      "Prefect",
-      "Shiny",
-      "Custom MCP servers",
-      "Web scraping"
-    ]
+      "Web scraping",
+      "Agentic workflow design (classifier → review UI → decisions log → next-run feedback)"
+    ],
+    "languages": ["SQL", "Python", "R", "Bash", "JavaScript", "TypeScript"],
+    "data_and_bi": ["Snowflake", "Hex (daily)", "Tableau", "Google Sheets"],
+    "gtm_tooling": ["Salesforce", "Gong", "Outreach", "DocuSign", "ZoomInfo", "Apollo"],
+    "data_engineering": ["dbt", "Prefect", "Shiny", "Hadoop (intern era)"]
   },
+
+  "what_joe_does_uniquely_well": [
+    "Pairs statistician-grade analytical rigor with operator-level instinct for what GTM leaders actually decide on each week.",
+    "Builds production-grade agentic workflows in Python + Claude Code — not prototypes, not demos, but tooling that runs the recurring work end-to-end.",
+    "Translates technical work to executive narratives and back — comfortable with engineers (Posit + R/Python depth) AND with C-suite review meetings (CEO/CRO/CFO weekly cadence).",
+    "Build-first mentality: when vendor tooling underperforms or costs too much, replaces it with custom Python + Claude Code automation."
+  ],
+
   "project_archetypes": [
     {
-      "title": "Per-customer gross-margin model",
-      "description": "Reframed COGS attribution from top-down budget allocation to bottom-up usage-based event joining. Identified underwater cohorts and cost-driver patterns; reconciled to GL. Used to support deal-desk decisions on renewals, pricing, and walk-aways.",
-      "skills": [
-        "Snowflake SQL multi-source joins",
-        "Python",
-        "event-data analysis",
-        "GL reconciliation"
-      ]
+      "title": "Per-customer gross-margin model + deal-desk qualification framework",
+      "description": "Reframed COGS attribution from top-down budget allocation to bottom-up usage-based event joining. Identified underwater cohorts and cost-driver patterns; reconciled to GL. Operationalized the margin signals into deal-desk qualification protocols guiding pricing, renewal, and go/no-go decisions.",
+      "skills": ["Snowflake SQL multi-source joins", "Python", "event-data analysis", "GL reconciliation", "operational protocol design"]
+    },
+    {
+      "title": "Renewal-risk dashboards as health-score operationalization",
+      "description": "Built renewal-risk dashboards in Hex/Snowflake that turn customer health signals (margin, usage, account state) into codified action protocols for CSMs and the deal desk. Health scores stop being a vibe; they become the trigger for specific next steps.",
+      "skills": ["Hex", "Snowflake SQL", "health-score modeling", "playbook design"]
     },
     {
       "title": "Pipeline scenario modeling under constraints",
       "description": "Built full-year pipeline forecast under business constraints, incorporating multiple sourcing channels with different ramp profiles, seasonality, and risk. Surfaced concentration-risk patterns and defensibility framing for executive review.",
-      "skills": [
-        "Snowflake SQL",
-        "Python scenario modeling",
-        "Hex",
-        "risk quantification"
-      ]
+      "skills": ["Snowflake SQL", "Python scenario modeling", "Hex", "risk quantification"]
     },
     {
       "title": "Cohort retention and expansion analysis",
       "description": "Calculated per-CSM and team-level NRR/GRR metrics using trailing-window cohort methodology. Identified segment-specific retention patterns to drive book-balancing and target-setting decisions.",
-      "skills": [
-        "SQL cohort building",
-        "monthly ARR waterfalls",
-        "segment analysis"
-      ]
+      "skills": ["SQL cohort building", "monthly ARR waterfalls", "segment analysis"]
     },
     {
-      "title": "Compensation plan design and audit",
+      "title": "Compensation plan design and quota structures",
       "description": "Designed multi-metric comp structures (quota plus retention-based gates), evaluated trade-offs between simplicity and alignment, and built per-rep simulations under different plan variants. Rebuilt historical commission calc from raw bookings; reconciled against legacy systems and surfaced edge cases.",
-      "skills": [
-        "scenario modeling",
-        "metric design",
-        "SaaS comp benchmarking",
-        "data reconciliation"
-      ]
+      "skills": ["scenario modeling", "metric design", "SaaS comp benchmarking", "data reconciliation"]
     },
     {
       "title": "Pricing floor and discount governance",
-      "description": "Established pricing floor hierarchy by package; built governance routing for exceptions; tracked compliance across thousands of contracts.",
-      "skills": [
-        "pricing model SQL",
-        "compliance tracking",
-        "stakeholder routing"
-      ]
+      "description": "Established pricing floor hierarchy by package; built governance routing for exceptions; tracked compliance across thousands of contracts. Designed segmented price-increase programs to protect unit economics.",
+      "skills": ["pricing model SQL", "compliance tracking", "stakeholder routing", "segmented program design"]
     },
     {
-      "title": "Quote-check and approval automation",
+      "title": "Quote-check and approval taxonomy",
       "description": "Discovery and taxonomy of an inbound quote-review channel — months of approval requests classified into recurring rule patterns to inform self-service tooling and automation.",
-      "skills": [
-        "taxonomy design",
-        "channel analysis",
-        "workflow automation"
-      ]
+      "skills": ["taxonomy design", "channel analysis", "workflow automation"]
+    },
+    {
+      "title": "Lead-routing, account-research, and forecasting automation",
+      "description": "Designed automations across the GTM stack: lead-routing logic, account-research enrichment, and forecast-running automations. Partnered with Engineering on integrations between Salesforce, billing systems, and the BI layer.",
+      "skills": ["Salesforce automation", "Python API integrations", "forecasting automation", "cross-system data plumbing"]
     },
     {
       "title": "Agentic-AI automation layer",
-      "description": "Built production-grade Python + Claude Code workflows for commission calculation, contract classification, recurring anomaly reporting, and ad-hoc analyses. Pattern: classifier model → manual review UI → decisions log → next-run feedback. Custom MCP servers integrate with internal data sources.",
-      "skills": [
-        "Claude Code",
-        "Python",
-        "MCP servers",
-        "agentic workflows",
-        "human-in-the-loop UIs"
-      ]
+      "description": "Built production-grade Python + Claude Code workflows for commission calculation, contract classification, recurring anomaly reporting, and ad-hoc analyses. Pattern: classifier model → manual review UI → decisions log → next-run feedback loop. Custom Claude Code skills, MCP servers, and memory systems integrate his tools with internal data sources.",
+      "skills": ["Claude Code", "Custom Claude skills", "MCP servers", "Python", "agentic workflows", "human-in-the-loop UIs"]
+    },
+    {
+      "title": "AI context layer / personal knowledge graph",
+      "description": "Maintains an MCP-backed memory system and Obsidian-based knowledge vault that captures every analysis, decision, and methodology so each new piece of work compounds on the last. Custom Claude Code skills wrap the most-used patterns (Hex notebooks, Google Slides decks, etc.) so they can be invoked by name.",
+      "skills": ["MCP servers", "Custom Claude skills", "knowledge management", "compounding-productivity systems"]
     },
     {
       "title": "Multi-touch attribution",
       "description": "Coordinated multi-touch marketing attribution work — defined scope (acquisition vs. nurturing vs. expansion influence), resolved data-quality issues, aligned methodology across Sales, CS, and Marketing.",
-      "skills": [
-        "attribution methodology",
-        "data source reconciliation",
-        "cross-functional alignment"
-      ]
+      "skills": ["attribution methodology", "data source reconciliation", "cross-functional alignment"]
+    },
+    {
+      "title": "Live technical demos and team enablement",
+      "description": "Built and ran live demos of R workflows (Shiny, API deployment, ETL, environment management) for technical buyers at Posit. Currently teaches Sales and CS teams how to adopt new AI-powered workflows; translates technical patterns into vocabulary non-technical stakeholders can act on. Background as a BYU TA teaching Tidyverse and statistics to 100+ students.",
+      "skills": ["technical-to-commercial translation", "team enablement", "live demo craft", "teaching"]
     }
   ],
+
   "methodologies": [
+    "Build-first / build-vs-buy: when vendor tooling underperforms, replace it with custom Python + Claude Code automation rather than negotiating around limitations.",
+    "Greenfield ownership: comfortable in environments without an established playbook — Workstream is exactly this.",
     "Parallel rollouts for risky CRM formula changes — build the new field side-by-side with the old; cutover is a single flip, no cascade risk.",
     "Build classifier → manual review UI → decisions log → next-run feedback loop for automating judgment-heavy GTM workflows.",
     "Bottom-up cost attribution via event joins — when budget allocation hides reality, reframe with usage events at the customer level.",
     "Trailing-window cohort retention metrics to smooth seasonality in NRR/GRR analysis.",
     "Side-by-side scenario modeling with sensitivity analysis to make risk visible to executives.",
+    "AI context layer as compounding productivity: every analysis becomes a reusable Claude skill or MCP-accessible memory artifact.",
     "Address root causes, not symptoms — workarounds are safety nets, not solutions.",
-    "Source-of-truth discipline — single canonical artifact per analysis, with deterministic rebuild from inputs."
+    "Source-of-truth discipline — single canonical artifact per analysis, with deterministic rebuild from inputs.",
+    "Translate technical workflows into vocabulary non-technical stakeholders can act on (and vice versa)."
   ],
+
   "scale_and_scope_language": [
-    "Hundreds of customer accounts in single books and cohorts",
-    "Hundreds of reps spanning industries and regions",
-    "Multi-channel GTM with marketing, BDR, AE self-source, and customer-success expansion",
-    "Weekly executive review cadence (CEO, CRO, CFO)",
+    "Sole owner of the AI/automation layer at Workstream, wired into Sales, CS, and Marketing motions",
+    "Multi-motion GTM ownership across Sales, Marketing, and Customer Success",
+    "~900 reps in scope on the Qualtrics weekly CRO forecast",
+    "5,000-person SaaS org during hypergrowth and IPO at Qualtrics",
+    "Hundreds of customer accounts across single books and cohorts",
+    "Weekly executive review cadence (CEO, CRO, CFO) plus quarterly board updates",
+    "Regional MBR/QBR cadence supporting Sales and Finance leadership",
     "Company-wide rollouts of comp-plan and pricing changes",
     "Thousands of contracts under pricing-governance tracking"
   ],
+
   "off_clock": "Spanish (full-time missionary in Argentina, 2015–2017). Handyman work — electrical, framing, drywall. Pianist and violinist. Board game enthusiast.",
+
   "looking_for": {
     "role_types": [
       "Revenue Operations / Sales Operations / Sales Strategy and Operations",
       "GTM Strategy and Operations",
+      "GTM Engineer / AI Operations / GTM Systems Engineer",
+      "Head of RevOps at a Series B / early-stage startup (founding-the-function scope)",
+      "Director, Solutions Strategy & Operations at hypergrowth AI-native companies",
       "Business Operations at GTM-driven companies"
     ],
-    "title_range": "Senior IC (Senior Analyst, Lead, Principal) through Director.",
+    "title_range": "Senior IC (Senior Analyst, Lead, Principal) through Director or Head-of (when founding the function).",
     "location": "Fully remote, or remote with very limited onsite (a handful of days per year). Not pursuing fully-onsite or heavily-hybrid roles.",
-    "company_profile": "AI-native or AI-first dev-tools and SaaS companies; modern data stack (Snowflake, dbt, Hex, Tableau); single coherent role definition rather than three jobs in one JD.",
-    "what_I_bring_that_is_uncommon": [
+    "company_profile": "AI-native or AI-first dev-tools, agentic-AI startups, and modern SaaS — modern data stack (Snowflake, dbt, Hex, Tableau); a single coherent role definition rather than three jobs in one JD.",
+    "what_makes_him_unusual": [
       "Daily, production-grade use of Claude Code for agentic GTM automation (commission calc, contract classification, recurring anomaly reporting).",
       "Statistician-grade analytical rigor combined with operator-level instinct for what GTM leaders actually decide on.",
-      "Comfort spanning the full stack — SQL/Python data engineering through executive narrative."
+      "Comfort spanning the full stack — SQL/Python data engineering through executive narrative.",
+      "Builds Claude skills, custom prompts, and MCP servers — has shipped his own AI context layer, not just consumed AI tools.",
+      "Hypergrowth + IPO context (Qualtrics) plus startup greenfield context (Workstream)."
     ]
   },
+
   "boundaries_for_this_chatbot": [
     "Do not name specific customers, coworkers, or managers — only Joe himself.",
     "Do not disclose dollar amounts, salary expectations, or financial figures of any kind.",

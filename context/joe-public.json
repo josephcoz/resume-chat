@@ -8,7 +8,7 @@
     "resume_pdf_url": "/joe-cj-resume.pdf"
   },
 
-  "summary": "Statistician-turned-RevOps operator. Joe builds the dashboards, margin models, and deal-desk frameworks GTM leaders use to decide what to invest in, what to price up, and what to walk away from — and ships production-grade Python + Claude Code agentic workflows so the recurring work runs itself. He owns weekly forecasting, executive variance narratives, comp-plan design, and the AI/automation layer wired into the operating cadence.",
+  "summary": "Statistician-turned-RevOps operator who runs his weekly work on AI. Joe uses Claude Code daily for forecasting, deal desk, and the recurring analyses that keep an exec cadence honest — and is starting to teach less-technical GTM teammates to do the same. He builds the dashboards, margin models, and comp plans GTM leaders use to decide what to invest in, what to price up, and what to walk away from.",
 
   "experience": [
     {
@@ -17,15 +17,15 @@
       "location": "Lehi, UT (remote-eligible)",
       "role": "Sales Strategy & Ops Manager (promoted from GTM Strategy & Ops Analyst)",
       "dates": "Apr 2024 – Present",
-      "scope": "Operator-level RevOps at a startup. Sole owner of the GTM data layer across Sales, Marketing, and CS, plus the AI/automation infrastructure wired into the executive cadence. Greenfield ownership: no playbook on arrival.",
+      "scope": "AI-powered RevOps practitioner at an AI-first HR/Payroll startup. Owns CRO forecasting, deal desk, comp-plan design, and the GTM data layer across Sales, Marketing, and CS — and runs the recurring work through Python and Claude Code rather than vendor tooling. Greenfield ownership: no playbook on arrival.",
       "highlights": [
+        "Runs his weekly work on Claude Code and Python — built personal automation for commission calculation, contract classification, and recurring anomaly reporting; maintains his own Claude skills and MCP servers so each analysis compounds the next. Started teaching less-technical GTM teammates the same setup in early May 2026.",
         "Built and owns executive dashboards in Hex, Tableau, and Snowflake tracking forecast vs. actuals, pipeline health, account-level gross margin, and renewal risk for weekly CEO/CRO/CFO reviews and quarterly board updates.",
         "Runs weekly revenue forecasting and variance analysis across Sales, Marketing, and Customer Success; translates findings into executive-ready narratives.",
         "Built an account-level gross-margin model and deal-desk qualification framework that turn renewal-risk and margin signals into codified action protocols guiding pricing, renewal, and go/no-go calls. Designed segmented price-increase programs to protect unit economics at scale.",
         "Owns sales comp-plan design and quota structures with Finance and Sales leadership.",
-        "Built production-grade Python + Claude Code agentic workflows for commission calculation, contract classification, and recurring anomaly reporting — replacing manual end-of-month grinds with one-command runs and reducing reliance on vendor tooling.",
         "Designed lead-routing, account-research, and forecasting automations across the GTM stack; partnered with Engineering on integrations between Salesforce, billing, and BI.",
-        "Owns his own AI context layer: maintains custom Claude Code skills, prompts, and an MCP-backed memory system that turns each analysis into a reusable artifact for the next one."
+        "Maintains a personal AI context layer — custom Claude Code skills, prompts, and an MCP-backed memory system — that turns each analysis into a reusable artifact for the next one."
       ]
     },
     {
@@ -50,7 +50,7 @@
       "scope": "Joined the makers of RStudio out of school to stay close to R and data science; learned enterprise SaaS from the customer-facing seat — and how to operate alongside highly technical end users without losing credibility.",
       "highlights": [
         "Managed a portfolio of 250+ customer accounts; negotiated renewals, surfaced churn risk, translated technical R/Python use cases into commercial outcomes for engineer-buyer audiences.",
-        "Built live demos of R workflows (Shiny, API deployment, ETL, environment management) — the same craft-as-authority muscle now applied to driving AI workflow adoption across GTM teams."
+        "Built live demos of R workflows (Shiny, API deployment, ETL, environment management) — the same craft-as-authority muscle now applied to driving AI workflow adoption across GTM teams (e.g., teaching colleagues to set up and use Claude Code in early May 2026)."
       ]
     }
   ],

@@ -8,7 +8,7 @@
     "resume_pdf_url": "/joe-cj-resume.pdf"
   },
 
-  "summary": "Statistician-turned-RevOps operator who runs his weekly work on AI. Joe uses Claude Code daily for forecasting, deal desk, and the recurring analyses that keep an exec cadence honest — and is starting to teach less-technical GTM teammates to do the same. He builds the dashboards, margin models, and comp plans GTM leaders use to decide what to invest in, what to price up, and what to walk away from.",
+  "summary": "Statistician-turned-RevOps operator who runs his weekly work on AI. Joe uses Claude Code daily for forecasting, deal desk, and the recurring analyses that keep an exec cadence honest — and is starting to teach less-technical GTM teammates to do the same. He builds the dashboards, margin models, capacity and quota plans, and comp plans GTM leaders use to decide what to invest in, what to price up, and what to walk away from.",
 
   "experience": [
     {
@@ -17,13 +17,16 @@
       "location": "Lehi, UT (remote-eligible)",
       "role": "Sales Strategy & Ops Manager (promoted from GTM Strategy & Ops Analyst)",
       "dates": "Apr 2024 – Present",
-      "scope": "AI-powered RevOps practitioner at an AI-first HR/Payroll startup. Owns CRO forecasting, deal desk, comp-plan design, and the GTM data layer across Sales, Marketing, and CS — and runs the recurring work through Python and Claude Code rather than vendor tooling. Greenfield ownership: no playbook on arrival.",
+      "scope": "AI-powered RevOps practitioner at an AI-first HR/Payroll startup. Owns CRO forecasting, deal desk, annual capacity/quota planning, comp-plan design, and the GTM data layer across Sales, Marketing, and CS — and runs the recurring work through Python and Claude Code rather than vendor tooling. Greenfield ownership: no playbook on arrival.",
       "highlights": [
         "Runs his weekly work on Claude Code and Python — built personal automation for commission calculation, contract classification, and recurring anomaly reporting; maintains his own Claude skills and MCP servers so each analysis compounds the next. Started teaching less-technical GTM teammates the same setup in early May 2026.",
         "Built and owns executive dashboards in Hex, Tableau, and Snowflake tracking forecast vs. actuals, pipeline health, account-level gross margin, and renewal risk for weekly CEO/CRO/CFO reviews and quarterly board updates.",
         "Runs weekly revenue forecasting and variance analysis across Sales, Marketing, and Customer Success; translates findings into executive-ready narratives.",
         "Built an account-level gross-margin model and deal-desk qualification framework that turn renewal-risk and margin signals into codified action protocols guiding pricing, renewal, and go/no-go calls. Designed segmented price-increase programs to protect unit economics at scale.",
-        "Owns sales comp-plan design and quota structures with Finance and Sales leadership.",
+        "Owns annual capacity planning for Sales and SDR — headcount, ramp, quota, and comp-plan design — with Finance and Sales leadership. Authored the FY26 plan: allocated the annual pipeline target across six sourcing channels, built a bottom-up SDR ramp model to replace a static allocation, and validated the AE bookings target against actual per-rep quota capacity at multiple attainment scenarios — surfacing a structural headcount gap and the hiring timeline required to close it.",
+        "Built the forward landing forecast the exec team runs on — a monthly ending-ARR bridge (churn, downsell, upsell, reactivation, new business) that weights current open pipeline by a custom point-in-time win-probability model rather than the CRM's stage probability, and presents the result as a three-scenario cone anchored to observed regimes instead of arbitrary shocks.",
+        "Closed the bookings-to-billings translation: quantified where signed ARR does and doesn't reach the invoice, classified every gap account as documented attrition, in-implementation, or silent leakage, and established the realization curve showing payroll revenue ramps over roughly five months post-signature rather than landing at contract start. Codified the canonical billed-ARR definition so bookings and billings stop being conflated in executive reporting.",
+        "Built and shipped the Deal Desk Agent — a Slack-native agentic deal reviewer. A rep drops a CRM quote link in a channel; it resolves legacy SKUs to current packages, computes gross margin against a cost model derived from a trailing-twelve-month allocation, checks how the quote is structured and whether the packaging is right for that customer, and returns a verdict with the specific price change that would clear the bar. The verdict is computed in Python and relayed verbatim — the LLM orchestrates, the math never guesses.",
         "Designed lead-routing, account-research, and forecasting automations across the GTM stack; partnered with Engineering on integrations between Salesforce, billing, and BI.",
         "Maintains a personal AI context layer — custom Claude Code skills, prompts, and an MCP-backed memory system — that turns each analysis into a reusable artifact for the next one."
       ]
@@ -116,6 +119,16 @@
       "skills": ["Snowflake SQL", "Python scenario modeling", "Hex", "risk quantification"]
     },
     {
+      "title": "Forward ARR landing forecast from open pipeline",
+      "description": "A monthly ending-ARR forecast built as a recursive movement bridge — prior month's book, less churn and contraction, plus expansion, reactivation, promotional roll-off, and new business. Current open pipeline is weighted by a point-in-time win-probability model built to replace the CRM's stage-based probability, which materially overstated what open pipeline was worth. Churn is a customer-level monthly hazard model, which buys a defensible non-flat shape driven by the renewal calendar plus an account-level at-risk worklist Customer Success can act on. Every component method was chosen by walk-forward backtest rather than preference, and lumpy months winsorized so a single outlier deal can't set the trend. Delivered as a three-scenario cone where each scenario is a regime the business has actually been in, not an arbitrary shock — tight near-term, fanning out with horizon.",
+      "skills": ["Python forecasting", "gradient boosting", "walk-forward backtesting", "discrete-time hazard modeling", "Snowflake SQL", "Hex", "scenario design"]
+    },
+    {
+      "title": "Bookings-to-billings translation",
+      "description": "Signed ARR and billed ARR are different numbers, and the gap between them was going unexplained. Built the booked-to-billed funnel: compared every recent booking against what it is actually invoicing, then classified each gap account into documented attrition (a contraction or churn record exists), still in implementation (expected — not billing yet), or silent leakage (no record anywhere). Only the third bucket is a process failure, and separating it changed the conversation from a scary aggregate number to a specific, actionable list. Established the revenue realization curve underneath it: non-payroll revenue lands essentially at signature, payroll ramps from roughly half of steady-state at month zero to full run-rate around month five as employees onboard — so booked revenue arrives as billings over months. Codified the canonical billed-ARR definition (provisioning-based) against the bookings definition so exec reporting stops conflating them.",
+      "skills": ["Snowflake SQL", "funnel classification design", "revenue realization modeling", "metric definition governance", "CRM and billing-system reconciliation"]
+    },
+    {
       "title": "Cohort retention and expansion analysis",
       "description": "Calculated per-CSM and team-level NRR/GRR metrics using trailing-window cohort methodology. Identified segment-specific retention patterns to drive book-balancing and target-setting decisions.",
       "skills": ["SQL cohort building", "monthly ARR waterfalls", "segment analysis"]
@@ -124,6 +137,11 @@
       "title": "Compensation plan design and quota structures",
       "description": "Designed multi-metric comp structures (quota plus retention-based gates), evaluated trade-offs between simplicity and alignment, and built per-rep simulations under different plan variants. Rebuilt historical commission calc from raw bookings; reconciled against legacy systems and surfaced edge cases.",
       "skills": ["scenario modeling", "metric design", "SaaS comp benchmarking", "data reconciliation"]
+    },
+    {
+      "title": "Annual sales & SDR capacity plan — headcount and quota",
+      "description": "Authored the FY26 plan. Top-down: allocated the annual pipeline target across six sourcing channels with H1/H2 seasonality, sizing each channel's stretch against its own prior-year baseline and scaling mechanics. Bottom-up: replaced a static SDR allocation with a ramp model (per-rep monthly productivity at the historical median, ramp curve keyed to hire month, top-rep output deliberately capped to de-risk concentration), then rolled the per-rep quota roster into annual capacity — ramp-adjusted for new hires and stress-tested at several attainment levels. The reconciliation showed the AE bookings target did not close at the existing headcount: a structural capacity gap, not a productivity problem. Quantified the hires required, the ramp lag before they contribute, and the capacity lost per month of hiring delay. Paired it with a territory/coverage read showing market size was never the constraint — brand activation speed was. Also ran the inverse for Customer Success, translating company-level year-end ARR targets into per-CSM retention quotas.",
+      "skills": ["capacity modeling", "quota design", "headcount planning", "ramp curves", "attainment scenario analysis", "territory and coverage analysis", "executive defensibility"]
     },
     {
       "title": "Pricing floor and discount governance",
@@ -139,6 +157,11 @@
       "title": "Lead-routing, account-research, and forecasting automation",
       "description": "Designed automations across the GTM stack: lead-routing logic, account-research enrichment, and forecast-running automations. Partnered with Engineering on integrations between Salesforce, billing systems, and the BI layer.",
       "skills": ["Salesforce automation", "Python API integrations", "forecasting automation", "cross-system data plumbing"]
+    },
+    {
+      "title": "Deal Desk Agent — agentic deal review in Slack",
+      "description": "A Slack-native agent that gives sellers an instant, trustworthy answer on whether a deal clears the bar. A rep drops a CRM quote link into a channel; the agent reads the quote, rolls individual SKUs up to their current package, computes gross margin against a cost model derived from a trailing-twelve-month allocation (never hardcoded rates), and replies in-thread — pass, or fail plus the specific price change that would clear it. Three deterministic arms: is the margin right, is the quote structurally built right (required fields, deal-type consistency, co-termination, date sanity), and is it the right package and entitlement for this customer. The core design commitment is deterministic verdict, LLM shell: the math is Python and gets relayed verbatim, so the model orchestrates and explains but never guesses a number. Shipped as a custom MCP server (~16 tools) running as a hosted connector behind a Slack agent, with read-only CRM access, promo-aware margin logic so a sanctioned promotion isn't read as a margin failure, and channel-aware output that fails closed — full cost and margin figures surface only in the internal channel, a sanitized verdict everywhere else. Backed by 200+ unit tests and a smoke harness that exercises the real protocol, and iterated directly from live stress-testing by working sellers.",
+      "skills": ["MCP server design", "agentic architecture", "deterministic-verdict pattern", "Slack agent delivery", "pricing and gross-margin modeling", "Python", "test-driven agent development", "read-only CRM integration"]
     },
     {
       "title": "Agentic-AI automation layer",
@@ -167,6 +190,10 @@
     "Greenfield ownership: comfortable in environments without an established playbook — Workstream is exactly this.",
     "Parallel rollouts for risky CRM formula changes — build the new field side-by-side with the old; cutover is a single flip, no cascade risk.",
     "Build classifier → manual review UI → decisions log → next-run feedback loop for automating judgment-heavy GTM workflows.",
+    "Deterministic core, LLM shell — the model orchestrates, explains, and routes; the verdict is computed in code and relayed verbatim, so an agent in front of consequential math never guesses.",
+    "Capacity-first planning: never accept a top-down target without reconciling it bottom-up against headcount, ramp curves, and realistic attainment — the gap is usually structural, not a productivity problem.",
+    "Bookings are not billings: model the realization lag explicitly rather than assuming signed revenue lands at contract start.",
+    "Let the backtest pick the method — walk-forward test every candidate and ship the winner, even when it's the boring one.",
     "Bottom-up cost attribution via event joins — when budget allocation hides reality, reframe with usage events at the customer level.",
     "Trailing-window cohort retention metrics to smooth seasonality in NRR/GRR analysis.",
     "Side-by-side scenario modeling with sensitivity analysis to make risk visible to executives.",
@@ -179,6 +206,7 @@
   "scale_and_scope_language": [
     "Sole owner of the AI/automation layer at Workstream, wired into Sales, CS, and Marketing motions",
     "Multi-motion GTM ownership across Sales, Marketing, and Customer Success",
+    "Annual capacity and quota plan spanning Sales, SDR, Channel, and CS-sourced pipeline",
     "~900 reps in scope on the Qualtrics weekly CRO forecast",
     "5,000-person SaaS org during hypergrowth and IPO at Qualtrics",
     "Hundreds of customer accounts across single books and cohorts",

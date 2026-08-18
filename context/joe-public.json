@@ -201,6 +201,37 @@
       ]
     },
     {
+      "id": "owns_the_cadence",
+      "title": "Owns the recurring leadership review cycle and the metric framework under it",
+      "maps_to": [
+        "rhythm of business",
+        "WBR/QBR cadence",
+        "executive reporting",
+        "trusted reporting",
+        "metric definition",
+        "operating cadence",
+        "decision follow-through",
+        "Finance partnership"
+      ],
+      "situation": "The company runs a monthly business review for senior leadership and a recurring leadership pipeline and forecast meeting. Both consumed numbers from several different systems, and there was no single owner of what the metrics meant — so definitions drifted between the deck, the dashboard, and whatever a team had computed for themselves.",
+      "task": "Own the cadence end to end: the metric definitions underneath it, the materials, the numbers being defensible, and the decisions actually getting followed through rather than re-litigated the following month.",
+      "action": "He owns the monthly business review and the recurring leadership forecast meeting as standing responsibilities, not as a reporting task handed to him each cycle. That means defining the metric framework rather than just populating it — he authored the definitions for the retention dual-anchor, the brand-level penetration and growth metrics leadership asked for, and a new composite metric for revenue from customers actively using the AI products, including sourcing the underlying usage data and specifying the dashboard tile. When leadership asked for new cuts he scoped them against the existing metric set before committing, rather than adding another number that would need reconciling later. He also writes the half-year retrospective that grades the company's key results against the plan, which is what closes the loop between the cadence and the planning work.",
+      "key_decisions": [
+        "Treated metric definition as part of owning the cadence rather than a separate data task — the recurring failure mode is a review where two people are looking at differently-defined versions of the same number.",
+        "Scoped new metric requests against the existing set before agreeing to build them, so the review does not accumulate numbers faster than it retires them.",
+        "Pushed the retention framing to a dual anchor rather than the single headline metric, because the headline was masking real churn behind expansion — that changed what the review actually discusses.",
+        "Corrected a headline growth metric on the leadership slide that recalculated its own baseline on every refresh, and pinned it to a fixed anchor so it could not drift again. Reporting the honest, much lower figure mattered more than the slide looking better.",
+        "Closes the loop with a written retrospective that grades results against plan and explains why each landed where it did, rather than letting the cadence be a monthly status readout with no memory."
+      ],
+      "follow_up_detail": [
+        "The five recurring processes he owned going into leave were commissions across six teams, deal desk, the monthly business review, the recurring leadership forecast meeting, and a live price-increase program — the two review cycles handed to the growth analyst specifically because they travel together.",
+        "He was subsequently handed ownership of the cross-functional operations coordination meeting and redefined its attendee list, which is the difference between running a meeting and owning a forum.",
+        "The metric work is specific and auditable: he reproduced the retention metric from first principles and tied it to the existing reported columns with no divergence across more than a year of months, which is what established it as the definition rather than an approximation.",
+        "He builds the reporting layer as well as the narrative — executive dashboards tracking forecast against actuals, pipeline health, account-level margin, and renewal risk, consumed in the weekly executive review cycle.",
+        "The retrospective is the artifact that shows the standard: five key results, why each hit or missed, a first action named for each, and a methodology section that flags by name which results rest on a narrow sample or a partially-instrumented metric."
+      ]
+    },
+    {
       "id": "winrate_cliff",
       "title": "Found the cliff hiding inside a target the company hit",
       "maps_to": [

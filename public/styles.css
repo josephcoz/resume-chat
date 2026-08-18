@@ -283,3 +283,10 @@ html, body {
   border-top: 1px solid var(--line);
   margin: 1em 0;
 }
+
+.message.bot a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-word;
+}

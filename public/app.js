@@ -15,13 +15,39 @@ function escapeHtml(s) {
   ));
 }
 
+// Links: [text](url). The source has already been html-escaped, so the url
+// arrives with &amp; etc. Only http(s) is allowed through — anything else
+// (javascript:, data:) renders as plain text rather than becoming a link.
+function renderLink(_m, text, url) {
+  const clean = url.replace(/&amp;/g, '&').trim();
+  if (!/^https?:\/\//i.test(clean)) return text;
+  return '<a href="' + clean.replace(/"/g, '%22') +
+         '" target="_blank" rel="noopener noreferrer">' + text + '</a>';
+}
+
 function renderInline(s) {
-  return s
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
+  // Links are extracted to placeholders BEFORE the emphasis rules run. Without
+  // that, the underscore rule chews through target="_blank" in the html this
+  // very function just produced.
+  const held = [];
+  const hold = html => `\u0000${held.push(html) - 1}\u0000`;
+
+  let out = s
+    .replace(/`([^`]+)`/g, (_m, code) => hold('<code>' + code + '</code>'))
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, text, url) => {
+      const html = renderLink(m, text, url);
+      return html === text ? text : hold(html);      // refused urls stay plain
+    })
+    .replace(/(^|[\s(])(https?:\/\/[^\s<>()]+)/g,
+             (_m, pre, url) => pre + hold(renderLink(url, url, url)));
+
+  out = out
     .replace(/\*\*\*([^*]+)\*\*\*/g, '<strong><em>$1</em></strong>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>')
     .replace(/(^|[^_])_([^_\n]+)_/g, '$1<em>$2</em>');
+
+  return out.replace(/\u0000(\d+)\u0000/g, (_m, i) => held[Number(i)]);
 }
 
 function renderMarkdown(src) {

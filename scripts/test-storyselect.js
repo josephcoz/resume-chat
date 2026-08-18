@@ -80,6 +80,12 @@ t('payload names the loaded stories', msg, s => s.includes('Stories loaded for t
 t('payload tells the model to answer from these', msg, s => /Answer from these/i.test(s));
 t('payload is far smaller than the whole library', msg.length,
   v => v < JSON.stringify(stories).length / 2);
+// The model quoted an id back as the name of the work. Stripping them from the
+// bundle missed this path entirely, because the injected bodies come from source.
+t('no story ids reach the model', msg, s => !/"id"\s*:/.test(s));
+t('no id value leaks either', msg, s => !stories.some(st => s.includes('"' + st.id + '"')));
+t('story content itself survives the strip', msg,
+  s => s.includes('situation') && s.includes('key_decisions'));
 
 console.log('assembled prompt (reads the real source, not a copy)');
 const chatSrc = fs.readFileSync(path.join(__dirname, '..', 'src', 'chat.ts'), 'utf8');

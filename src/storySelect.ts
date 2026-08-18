@@ -125,6 +125,11 @@ export function buildStoryIndex(stories: Story[]): string[] {
 
 export function buildStoriesMessage(selected: Story[]): string {
   if (!selected.length) return '';
+  // Ids are tooling scaffolding. Stripping them in the bundle was not enough —
+  // the injected bodies come straight from the source, and the model quoted an
+  // id back as if it were the name of the work. Strip at the render point so it
+  // holds no matter who calls this.
+  const clean = selected.map(({ id: _id, ...rest }) => rest);
   return [
     '## Stories loaded for this question',
     '',
@@ -137,7 +142,7 @@ export function buildStoriesMessage(selected: Story[]): string {
     'here, say it exists, describe it in a sentence, and offer to go into it — do not improvise the detail.',
     '',
     '```json',
-    JSON.stringify(selected, null, 2),
+    JSON.stringify(clean, null, 2),
     '```',
   ].join('\n');
 }

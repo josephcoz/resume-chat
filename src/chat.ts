@@ -6,6 +6,7 @@
 
 import publicBundle from '../context/joe-public.json';
 import { extractUrls, fetchPageText, buildRetrievedMessage } from './linkFetch';
+import { selectStories, buildStoryIndex, buildStoriesMessage, DEFAULT_LIMIT, type Story } from './storySelect';
 import { SYSTEM_PROMPT as systemPromptText } from './_systemPrompt';
 
 interface ChatEnv {
@@ -65,6 +66,45 @@ const REFUSAL_TEXT =
   "I can't share specifics on that. Joe is happy to talk numbers and names directly — " +
   "you can reach him at josephcoz@gmail.com or via LinkedIn (linkedin.com/in/joe-cosby-johnson).";
 
+function allStories(): Story[] {
+  return ((publicBundle as Record<string, unknown>).stories ?? []) as Story[];
+}
+
+// The bundle carries a one-line index of every story rather than 33 full bodies;
+// the bodies relevant to this question are injected separately, closer to
+// generation. Story ids are dropped throughout — they are tooling scaffolding
+// (scripts/check-story-depth.js) and the model was printing them as content.
+function bundleForModel(): unknown {
+  const clone = JSON.parse(JSON.stringify(publicBundle)) as Record<string, unknown>;
+  delete clone.stories;
+  clone.story_index = buildStoryIndex(allStories());
+  clone.story_index_note =
+    'Titles only. The full text of the stories relevant to this question is provided separately below. ' +
+    'Use this index to know what else exists and to offer it by name — never improvise a story from its title.';
+  return clone;
+}
+
+// Restated as the final message, after the bundle and the loaded stories. Even
+// at the reduced size the grounding runs to thousands of tokens, and rules given
+// before it are a long way from where generation starts. The ones that shape
+// output are exactly the ones that get dropped, so they are repeated here.
+const OUTPUT_REMINDER = [
+  '## Before you answer — the rules most easily forgotten',
+  '',
+  '1. **Depth over breadth.** If the question has many parts, give a one or two sentence overall read,',
+  '   answer the FIRST part properly with a story, list the rest by name only, and offer to continue.',
+  '   Then stop. Do not rate every item in one pass unless they explicitly asked for a summary.',
+  '2. **Tell the story.** Name what he actually did, the decision he made, and how it turned out.',
+  '   "Joe has experience with X" is not an answer — if the sentence would be true of any competent',
+  '   candidate, replace it with the specific thing.',
+  '3. **Name the gaps.** If something is not covered, say "Not covered" plainly and say what he uses',
+  '   instead. An assessment with no gaps reads as marketing and gets discounted entirely.',
+  '4. **Never print internal identifiers or field names.** Describe a story in plain language.',
+  '5. **Numbers are fine.** Years, headcounts, percentages, dates, counts — use them precisely. The',
+  '   restriction is money only. Never silently drop a non-financial number; that reads as an error.',
+  '6. **Markdown.** Bold what matters, bullets for lists, headings only when an answer has real sections.',
+].join('\n');
+
 function buildSystemPrompt(): string {
   return [
     systemPromptText.trim(),
@@ -74,7 +114,7 @@ function buildSystemPrompt(): string {
     '## Joe context bundle (the only Joe-information you may use)',
     '',
     '```json',
-    JSON.stringify(publicBundle, null, 2),
+    JSON.stringify(bundleForModel(), null, 2),
     '```',
   ].join('\n');
 }
@@ -138,9 +178,22 @@ export async function handleChat(request: Request, env: ChatEnv): Promise<Respon
 
   // Order matters. Providers that trim an over-long request drop from the front, so
   // the conversation goes first and the grounding sits closest to the generation.
+  // Selection reads the last few user turns, not just the newest one, so a bare
+  // "continue" or "tell me more" still resolves against what was being discussed.
+  // Retrieved page text is included because a pasted job description is the main
+  // thing that should drive which stories load.
+  const selectionQuery = [
+    ...safeHistory.filter(m => m.role === 'user').slice(-3).map(m => m.content),
+    ...retrieved,
+  ].join('\n');
+  const selected = selectStories(allStories(), selectionQuery, DEFAULT_LIMIT);
+  const storiesMessage = buildStoriesMessage(selected);
+
   const grounding = [
     { role: 'system', content: buildSystemPrompt() },
     ...retrieved.map(content => ({ role: 'system', content })),
+    ...(storiesMessage ? [{ role: 'system', content: storiesMessage }] : []),
+    { role: 'system', content: OUTPUT_REMINDER },
   ];
 
   // Budget guard. History is the only expendable part — never drop the prompt, the

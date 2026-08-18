@@ -5,7 +5,7 @@
   "description": "Recruiter-facing chat over a sanitized summary of Joe Cosby-Johnson's resume.",
   "scripts": {
     "lint": "node scripts/sanitize-check.js",
-    "test": "node scripts/test-linkfetch.js && node scripts/test-markdown.js && node scripts/check-story-depth.js",
+    "test": "node scripts/test-linkfetch.js && node scripts/test-markdown.js && node scripts/test-storyselect.js && node scripts/check-story-depth.js",
     "check": "npm run lint && npm run test && tsc --noEmit",
     "dev": "npm run lint && wrangler dev",
     "preview": "npm run check && wrangler versions upload",

@@ -396,5 +396,120 @@
         "why_it_matters": "Demonstrates shipping an LLM app with layered safety controls rather than a bare prompt."
       }
     ]
-  }
+  },
+  "stories_how_to_use": "Use these when asked about fit, experience in an area, or 'tell me about a time'. Pick the ONE story that best fits and tell it — situation, task, action, and result if present. Some have no result because the outcome is a figure Joe does not disclose; tell those as situation/task/action and stop, rather than inventing an outcome or padding with adjectives. Never merge two stories. Never describe a story in the abstract when you can tell it.",
+  "stories": [
+    {
+      "id": "annual_plan",
+      "title": "Built the annual pipeline plan the company now grades itself against",
+      "maps_to": [
+        "annual planning",
+        "bottoms-up revenue models",
+        "planning source of truth",
+        "channel splits",
+        "variance to plan"
+      ],
+      "situation": "Leadership set an annual pipeline target top-down. There was no agreed split across sourcing channels, no shared seasonality assumption, and one channel's implied growth looked absurd enough on its face to discredit the whole model in review.",
+      "task": "Turn a single top-down number into a defensible plan: allocate it across every sourcing channel, on a ramp each channel owner would accept.",
+      "action": "Built it bottom-up. Derived the half-over-half shape from prior-year actuals rather than splitting evenly. Replaced a static allocation for the outbound team with a ramp model driven by actual hire dates and per-rep productivity percentiles, and deliberately capped one outlier rep's contribution so the plan didn't depend on a single person. Gave every channel a year-over-year delta and a risk rating. Then wrote the defense alongside it — for each channel, the specific rebuttal to 'that number is too high,' grounded in what that channel had actually delivered.",
+      "result": "Adopted as the planning baseline. Leadership grades company key results against it, and Joe wrote the half-year retrospective that does the grading."
+    },
+    {
+      "id": "attribution_baseline",
+      "title": "Killed a growth number that would have discredited the plan",
+      "maps_to": [
+        "variance to plan",
+        "data integrity",
+        "forecast hygiene",
+        "attribution"
+      ],
+      "situation": "One channel in the annual plan carried a year-over-year growth figure large enough that reviewers stopped reading the rest of the model.",
+      "task": "Establish whether the number was real before the plan went in front of leadership.",
+      "action": "Traced the prior-year baseline to a legacy attribution model in the warehouse and tested it against the newer activation-touch model across every opportunity in the period. The two agreed on only a small minority of the opportunities both covered, and the legacy model was blind to hundreds of opportunities outright — it had never seen a large share of that channel's contribution.",
+      "result": "The true baseline was several times what the legacy model reported, so the real growth rate was a modest fraction of the headline. The weakest-looking number in the plan became one of the best-supported, and the reframe was reusable every time someone challenged it."
+    },
+    {
+      "id": "capacity_marginal_roi",
+      "title": "Tested a hiring plan before the requisitions opened",
+      "maps_to": [
+        "quota and capacity planning",
+        "CAC-rightsized capacity models",
+        "investment to expected output",
+        "seller-level goals"
+      ],
+      "situation": "The go-to-market org's capacity model called for hiring a block of account executives — a large committed cost — but nothing established that the existing reps were actually at capacity.",
+      "task": "Validate the hiring plan before the requisitions opened, working with the sales leader and the team lead who owned it.",
+      "action": "Started from a hypothesis: a lower-cost sourcing role generates more incremental pipeline per dollar than an account executive, because account executives draw from a finite pool of opportunities while sourcing roles expand it. Classified over a year of opportunity data by which role sourced it, built a return table on pipeline generated per dollar of on-target earnings by role, then filtered to tenured and currently-active reps only and tested their actual opportunities per month against the at-capacity threshold. Cross-checked the CRM activity table to separate a genuine capacity ceiling from a coaching problem.",
+      "result": "The sourcing role returned several times the pipeline per dollar even under the most conservative assumptions, and tenured reps were under-utilized rather than saturated — a capacity-utilization finding, not just a hiring one. The hiring mix was reallocated and that team more than doubled."
+    },
+    {
+      "id": "metric_baseline_drift",
+      "title": "Found a flagship metric that recalculated its own baseline, and restated it downward",
+      "maps_to": [
+        "data integrity",
+        "trusted reporting",
+        "rhythm of business",
+        "numbers trusted without re-checking"
+      ],
+      "situation": "A flagship growth metric on the monthly leadership slide was reporting roughly triple its true value. Nobody had reproduced it from source.",
+      "task": "Grade the half-year honestly, which meant reproducing every headline number rather than restating the deck.",
+      "action": "Rebuilt the metric from the underlying data and found it recalculated its own starting baseline on every refresh — as the underlying history matured, the baseline rose and the net-new figure fell with it. The number on the slide had never been reproducible; a fresh run of the same slide printed something far lower.",
+      "result": "Pinned the baseline to a fixed prior-year-end anchor so it could not drift again, restated the figure sharply downward, and presented the honest read to senior leadership with the explanation of why the old one was wrong. It was a miss against either number."
+    },
+    {
+      "id": "bookings_to_billings",
+      "title": "Closed the gap between what was signed and what was invoiced",
+      "maps_to": [
+        "Finance partnership",
+        "trusted reporting",
+        "revenue point of view",
+        "data integrity"
+      ],
+      "situation": "Bookings were being reported as though they became revenue. Nobody had reconciled signed ARR against what customers were actually billed.",
+      "task": "Quantify where signed revenue does and does not reach the invoice, and make the gap actionable rather than alarming.",
+      "action": "Compared booked monthly revenue against trailing billed revenue for every customer signed in the prior half-year, then classified each gap account three ways using contraction records, churn flags, and implementation status: documented attrition already managed, accounts legitimately mid-implementation and not yet billing, and silent leakage with no record anywhere. Drove churn dating off the revenue signal rather than the CRM's churn-date field after finding the two disagreed on a meaningful share of cases.",
+      "result": "The silent bucket turned out to be a process gap — rates reduced outside the CRM. Established the realization curve showing payroll revenue ramps over months after signature rather than landing at contract start, and codified the canonical billed-revenue definition so bookings and billings stopped being conflated in executive reporting."
+    },
+    {
+      "id": "landing_forecast_audit",
+      "title": "Built the forward forecast, then audited it hard enough to delete his own number",
+      "maps_to": [
+        "owning forecasting",
+        "bottoms-up revenue models",
+        "revenue point of view",
+        "scenario modeling"
+      ],
+      "situation": "The executive team needed a forward landing forecast they could defend, not a straight-line trend.",
+      "task": "Build a forecast whose assumptions survive being challenged.",
+      "action": "Built a monthly ending-revenue bridge across churn, downsell, upsell, reactivation and new business, weighting open pipeline by a custom point-in-time win-probability model instead of the CRM's stage probability — backtested against the incumbent, which it beat clearly, and which turned out to overstate open-pipeline value substantially. Presented it as a three-scenario cone anchored to observed regimes rather than arbitrary shocks. Then ran an adversarial audit of his own model using independent agents instructed to attack it.",
+      "result": "The audit found the writeup no longer matched the shipped code, and that new business — the entire growth engine — was modeled high and gross while actually declining. He removed an unsourced revenue credit from his own forecast rather than defend it, and restated the central estimate lower."
+    },
+    {
+      "id": "complexity_scoring_model",
+      "title": "Shipped a scoring model into the CRM instead of handing over an analysis",
+      "maps_to": [
+        "analysis to implementation",
+        "process and systems design",
+        "automation",
+        "adoption"
+      ],
+      "situation": "The implementation team had no way to forecast how complex or long a new project would be, so staffing and customer commitments were guesswork.",
+      "task": "Turn that into something usable inside the tool the team already worked in — not a spreadsheet on the side.",
+      "action": "Built the scoring model from historical project and CRM data, then shipped it as native formula fields on the request object: a complexity score, a tier, a predicted duration bucket, and an editable classification field the team fills in themselves. When the standard permissions deploy path silently failed in production, fell back to the platform's Tooling API to grant field permissions profile by profile rather than leaving the fields invisible.",
+      "result": "Live in production, scoring every historical record on day one, with the tier distribution matching what the sandbox predicted. The implementation lead asked for the raw score to be surfaced on the page and scheduled a refinement pass a quarter out — real adoption, not a one-off."
+    },
+    {
+      "id": "promo_realization",
+      "title": "Replaced a contractual promise with what actually shows up",
+      "maps_to": [
+        "forecast hygiene",
+        "revenue point of view",
+        "Finance partnership"
+      ],
+      "situation": "A senior leader asked for a forecast built on contractually promised revenue from expiring promotional pricing. The naive answer was to sum it.",
+      "task": "Pressure-test that number before it reached a board narrative.",
+      "action": "Backtested every historical customer-and-event pair over more than a year with a fixed post-expiry window, asking how much of the promised amount actually appeared in revenue. Split the answer by product family and found the two behave completely differently: fixed-price products largely land after an onboarding lag, while per-employee usage products barely realize at all — the contracted quantity is a ceiling untethered from billable headcount.",
+      "result": "Roughly a tenth of the promised amount was realized on a blended basis, with the majority of events realizing almost nothing. Reframed the conversation from 'this revenue is coming' to a small pool of clearly-bad contracted revenue with commissions already paid, plus realization curves to plan around. Surfaced a handful of rep-level over-quotes for coaching rather than punishment."
+    }
+  ]
 }

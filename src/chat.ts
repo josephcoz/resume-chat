@@ -13,7 +13,7 @@ interface ChatEnv {
 }
 
 const MODEL = '@cf/meta/llama-3.3-70b-instruct-fp8-fast';
-const MAX_TOKENS = 1100;
+const MAX_TOKENS = 2000;
 const MAX_HISTORY_MESSAGES = 20;
 // Only the newest user turn is scanned for links, and only this many are
 // fetched per request — a hard ceiling on work a single caller can trigger.

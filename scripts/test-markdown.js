@@ -37,6 +37,13 @@ t('italic asterisk', md('*x*'), '<p><em>x</em></p>');
 t('italic underscore', md('_x_'), '<p><em>x</em></p>');
 t('code', md('`x`'), '<p><code>x</code></p>');
 t('underscores inside code survive', md('`snake_case_here`'), s => s.includes('snake_case_here'));
+// Intra-word underscores are identifiers, not emphasis. The naive rule turned
+// capacity_marginal_roi into capacity<em>marginal</em>roi in a live answer.
+t('snake_case not italicised', md('capacity_marginal_roi'), '<p>capacity_marginal_roi</p>');
+t('two identifiers on a line', md('see annual_plan and forecast_regime_cone'),
+  s => s.includes('annual_plan') && s.includes('forecast_regime_cone') && !s.includes('<em>'));
+t('real underscore emphasis still works', md('an _emphasised_ word'), '<p>an <em>emphasised</em> word</p>');
+t('intra-word asterisk not italicised', md('a*b*c'), '<p>a*b*c</p>');
 
 console.log('links');
 t('markdown link', md('[go](https://a.com)'), s => s.includes('href="https://a.com"'));

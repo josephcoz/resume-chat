@@ -44,8 +44,11 @@ function renderInline(s) {
   out = out
     .replace(/\*\*\*([^*]+)\*\*\*/g, '<strong><em>$1</em></strong>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>')
-    .replace(/(^|[^_])_([^_\n]+)_/g, '$1<em>$2</em>');
+    .replace(/(^|[^*\w])\*([^*\n]+)\*(?![\w*])/g, '$1<em>$2</em>')
+    // Underscore emphasis only at word boundaries. Intra-word underscores are
+    // identifiers (snake_case_like_this), not markup — the naive rule rendered
+    // them as italics with the underscores eaten.
+    .replace(/(^|[^\w_])_([^_\n]+)_(?![\w_])/g, '$1<em>$2</em>');
 
   return out.replace(/\u0000(\d+)\u0000/g, (_m, i) => held[Number(i)]);
 }

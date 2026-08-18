@@ -5,11 +5,10 @@
   "contact": {
     "email": "josephcoz@gmail.com",
     "linkedin": "linkedin.com/in/joe-cosby-johnson",
-    "resume_pdf_url": "/joe-cj-resume.pdf"
+    "resume_pdf_url": "/joe-cj-resume.pdf",
+    "github": "github.com/josephcoz"
   },
-
   "summary": "Statistician-turned-RevOps operator who runs his weekly work on AI. Joe uses Claude Code daily for forecasting, deal desk, and the recurring analyses that keep an exec cadence honest — and is starting to teach less-technical GTM teammates to do the same. He builds the dashboards, margin models, capacity and quota plans, and comp plans GTM leaders use to decide what to invest in, what to price up, and what to walk away from.",
-
   "experience": [
     {
       "company": "Workstream",
@@ -24,6 +23,8 @@
         "Runs weekly revenue forecasting and variance analysis across Sales, Marketing, and Customer Success; translates findings into executive-ready narratives.",
         "Built an account-level gross-margin model and deal-desk qualification framework that turn renewal-risk and margin signals into codified action protocols guiding pricing, renewal, and go/no-go calls. Designed segmented price-increase programs to protect unit economics at scale.",
         "Owns annual capacity planning for Sales and SDR — headcount, ramp, quota, and comp-plan design — with Finance and Sales leadership. Authored the FY26 plan: allocated the annual pipeline target across six sourcing channels, built a bottom-up SDR ramp model to replace a static allocation, and validated the AE bookings target against actual per-rep quota capacity at multiple attainment scenarios — surfacing a structural headcount gap and the hiring timeline required to close it.",
+        "Owns the recurring business-review rhythm — metric definitions, materials, and decision follow-through for the monthly leadership review, plus the half-year retrospective grading every company key result against plan. That retrospective caught a headline growth metric that silently recalculated its own baseline on each refresh, making the reported figure unreproducible; he corrected the definition to a fixed baseline, restated the number downward, and walked leadership through the honest read.",
+        "Rightsizes capacity by marginal return, not headcount request: when the org proposed hiring a block of account executives, he classified over a year of opportunity data by sourcing role and compared pipeline generated per dollar of on-target earnings by role, then checked whether tenured reps were actually at capacity against an opportunities-per-month threshold. Finding: the lower-cost sourcing role returned several times the pipeline per dollar, and existing reps were under-utilized rather than saturated. The hiring mix was reallocated and that team more than doubled.",
         "Built the forward landing forecast the exec team runs on — a monthly ending-ARR bridge (churn, downsell, upsell, reactivation, new business) that weights current open pipeline by a custom point-in-time win-probability model rather than the CRM's stage probability, and presents the result as a three-scenario cone anchored to observed regimes instead of arbitrary shocks.",
         "Closed the bookings-to-billings translation: quantified where signed ARR does and doesn't reach the invoice, classified every gap account as documented attrition, in-implementation, or silent leakage, and established the realization curve showing payroll revenue ramps over roughly five months post-signature rather than landing at contract start. Codified the canonical billed-ARR definition so bookings and billings stop being conflated in executive reporting.",
         "Built and shipped the Deal Desk Agent — a Slack-native agentic deal reviewer. A rep drops a CRM quote link in a channel; it resolves legacy SKUs to current packages, computes gross margin against a cost model derived from a trailing-twelve-month allocation, checks how the quote is structured and whether the packaging is right for that customer, and returns a verdict with the specific price change that would clear the bar. The verdict is computed in Python and relayed verbatim — the LLM orchestrates, the math never guesses.",
@@ -57,7 +58,6 @@
       ]
     }
   ],
-
   "education": {
     "school": "Brigham Young University",
     "degree": "BS Statistics — Applied Stats and Analytics",
@@ -77,10 +77,9 @@
       }
     ]
   },
-
   "stack": {
     "agentic_and_ai": [
-      "Claude Code (daily driver for production-grade agentic workflows)",
+      "Claude Code (daily driver for agentic GTM workflows)",
       "Custom Claude skills (e.g., Hex notebooks, Google Slides building)",
       "Custom prompts and prompt engineering",
       "MCP servers (Model Context Protocol)",
@@ -89,102 +88,236 @@
       "Web scraping",
       "Agentic workflow design (classifier → review UI → decisions log → next-run feedback)"
     ],
-    "languages": ["SQL", "Python", "R", "Bash", "JavaScript", "TypeScript"],
-    "data_and_bi": ["Snowflake", "Hex (daily)", "Tableau", "Google Sheets"],
-    "gtm_tooling": ["Salesforce", "Gong", "Outreach", "DocuSign", "ZoomInfo", "Apollo"],
-    "data_engineering": ["dbt", "Prefect", "Shiny", "Hadoop (intern era)"]
+    "languages": [
+      "SQL",
+      "Python",
+      "R",
+      "Bash",
+      "JavaScript",
+      "TypeScript"
+    ],
+    "data_and_bi": [
+      "Snowflake",
+      "Hex (daily)",
+      "Tableau",
+      "Google Sheets"
+    ],
+    "gtm_tooling": [
+      "Salesforce",
+      "Gong",
+      "Outreach",
+      "DocuSign",
+      "ZoomInfo",
+      "Apollo"
+    ],
+    "data_engineering": [
+      "dbt",
+      "Prefect",
+      "Shiny",
+      "Hadoop (intern era)"
+    ]
   },
-
   "what_joe_does_uniquely_well": [
     "Pairs statistician-grade analytical rigor with operator-level instinct for what GTM leaders actually decide on each week.",
     "Builds production-grade agentic workflows in Python + Claude Code — not prototypes, not demos, but tooling that runs the recurring work end-to-end.",
     "Translates technical work to executive narratives and back — comfortable with engineers (Posit + R/Python depth) AND with C-suite review meetings (CEO/CRO/CFO weekly cadence).",
     "Build-first mentality: when vendor tooling underperforms or costs too much, replaces it with custom Python + Claude Code automation."
   ],
-
   "project_archetypes": [
     {
       "title": "Per-customer gross-margin model + deal-desk qualification framework",
       "description": "Reframed COGS attribution from top-down budget allocation to bottom-up usage-based event joining. Identified underwater cohorts and cost-driver patterns; reconciled to GL. Operationalized the margin signals into deal-desk qualification protocols guiding pricing, renewal, and go/no-go decisions.",
-      "skills": ["Snowflake SQL multi-source joins", "Python", "event-data analysis", "GL reconciliation", "operational protocol design"]
+      "skills": [
+        "Snowflake SQL multi-source joins",
+        "Python",
+        "event-data analysis",
+        "GL reconciliation",
+        "operational protocol design"
+      ]
     },
     {
       "title": "Renewal-risk dashboards as health-score operationalization",
       "description": "Built renewal-risk dashboards in Hex/Snowflake that turn customer health signals (margin, usage, account state) into codified action protocols for CSMs and the deal desk. Health scores stop being a vibe; they become the trigger for specific next steps.",
-      "skills": ["Hex", "Snowflake SQL", "health-score modeling", "playbook design"]
+      "skills": [
+        "Hex",
+        "Snowflake SQL",
+        "health-score modeling",
+        "playbook design"
+      ]
     },
     {
       "title": "Pipeline scenario modeling under constraints",
       "description": "Built full-year pipeline forecast under business constraints, incorporating multiple sourcing channels with different ramp profiles, seasonality, and risk. Surfaced concentration-risk patterns and defensibility framing for executive review.",
-      "skills": ["Snowflake SQL", "Python scenario modeling", "Hex", "risk quantification"]
+      "skills": [
+        "Snowflake SQL",
+        "Python scenario modeling",
+        "Hex",
+        "risk quantification"
+      ]
     },
     {
       "title": "Forward ARR landing forecast from open pipeline",
       "description": "A monthly ending-ARR forecast built as a recursive movement bridge — prior month's book, less churn and contraction, plus expansion, reactivation, promotional roll-off, and new business. Current open pipeline is weighted by a point-in-time win-probability model built to replace the CRM's stage-based probability, which materially overstated what open pipeline was worth. Churn is a customer-level monthly hazard model, which buys a defensible non-flat shape driven by the renewal calendar plus an account-level at-risk worklist Customer Success can act on. Every component method was chosen by walk-forward backtest rather than preference, and lumpy months winsorized so a single outlier deal can't set the trend. Delivered as a three-scenario cone where each scenario is a regime the business has actually been in, not an arbitrary shock — tight near-term, fanning out with horizon.",
-      "skills": ["Python forecasting", "gradient boosting", "walk-forward backtesting", "discrete-time hazard modeling", "Snowflake SQL", "Hex", "scenario design"]
+      "skills": [
+        "Python forecasting",
+        "gradient boosting",
+        "walk-forward backtesting",
+        "discrete-time hazard modeling",
+        "Snowflake SQL",
+        "Hex",
+        "scenario design"
+      ]
     },
     {
       "title": "Bookings-to-billings translation",
       "description": "Signed ARR and billed ARR are different numbers, and the gap between them was going unexplained. Built the booked-to-billed funnel: compared every recent booking against what it is actually invoicing, then classified each gap account into documented attrition (a contraction or churn record exists), still in implementation (expected — not billing yet), or silent leakage (no record anywhere). Only the third bucket is a process failure, and separating it changed the conversation from a scary aggregate number to a specific, actionable list. Established the revenue realization curve underneath it: non-payroll revenue lands essentially at signature, payroll ramps from roughly half of steady-state at month zero to full run-rate around month five as employees onboard — so booked revenue arrives as billings over months. Codified the canonical billed-ARR definition (provisioning-based) against the bookings definition so exec reporting stops conflating them.",
-      "skills": ["Snowflake SQL", "funnel classification design", "revenue realization modeling", "metric definition governance", "CRM and billing-system reconciliation"]
+      "skills": [
+        "Snowflake SQL",
+        "funnel classification design",
+        "revenue realization modeling",
+        "metric definition governance",
+        "CRM and billing-system reconciliation"
+      ]
     },
     {
       "title": "Cohort retention and expansion analysis",
       "description": "Calculated per-CSM and team-level NRR/GRR metrics using trailing-window cohort methodology. Identified segment-specific retention patterns to drive book-balancing and target-setting decisions.",
-      "skills": ["SQL cohort building", "monthly ARR waterfalls", "segment analysis"]
+      "skills": [
+        "SQL cohort building",
+        "monthly ARR waterfalls",
+        "segment analysis"
+      ]
     },
     {
       "title": "Compensation plan design and quota structures",
       "description": "Designed multi-metric comp structures (quota plus retention-based gates), evaluated trade-offs between simplicity and alignment, and built per-rep simulations under different plan variants. Rebuilt historical commission calc from raw bookings; reconciled against legacy systems and surfaced edge cases.",
-      "skills": ["scenario modeling", "metric design", "SaaS comp benchmarking", "data reconciliation"]
+      "skills": [
+        "scenario modeling",
+        "metric design",
+        "SaaS comp benchmarking",
+        "data reconciliation"
+      ]
     },
     {
       "title": "Annual sales & SDR capacity plan — headcount and quota",
       "description": "Authored the FY26 plan. Top-down: allocated the annual pipeline target across six sourcing channels with H1/H2 seasonality, sizing each channel's stretch against its own prior-year baseline and scaling mechanics. Bottom-up: replaced a static SDR allocation with a ramp model (per-rep monthly productivity at the historical median, ramp curve keyed to hire month, top-rep output deliberately capped to de-risk concentration), then rolled the per-rep quota roster into annual capacity — ramp-adjusted for new hires and stress-tested at several attainment levels. The reconciliation showed the AE bookings target did not close at the existing headcount: a structural capacity gap, not a productivity problem. Quantified the hires required, the ramp lag before they contribute, and the capacity lost per month of hiring delay. Paired it with a territory/coverage read showing market size was never the constraint — brand activation speed was. Also ran the inverse for Customer Success, translating company-level year-end ARR targets into per-CSM retention quotas.",
-      "skills": ["capacity modeling", "quota design", "headcount planning", "ramp curves", "attainment scenario analysis", "territory and coverage analysis", "executive defensibility"]
+      "skills": [
+        "capacity modeling",
+        "quota design",
+        "headcount planning",
+        "ramp curves",
+        "attainment scenario analysis",
+        "territory and coverage analysis",
+        "executive defensibility"
+      ]
     },
     {
       "title": "Pricing floor and discount governance",
       "description": "Established pricing floor hierarchy by package; built governance routing for exceptions; tracked compliance across thousands of contracts. Designed segmented price-increase programs to protect unit economics.",
-      "skills": ["pricing model SQL", "compliance tracking", "stakeholder routing", "segmented program design"]
+      "skills": [
+        "pricing model SQL",
+        "compliance tracking",
+        "stakeholder routing",
+        "segmented program design"
+      ]
     },
     {
       "title": "Quote-check and approval taxonomy",
       "description": "Discovery and taxonomy of an inbound quote-review channel — months of approval requests classified into recurring rule patterns to inform self-service tooling and automation.",
-      "skills": ["taxonomy design", "channel analysis", "workflow automation"]
+      "skills": [
+        "taxonomy design",
+        "channel analysis",
+        "workflow automation"
+      ]
     },
     {
       "title": "Lead-routing, account-research, and forecasting automation",
       "description": "Designed automations across the GTM stack: lead-routing logic, account-research enrichment, and forecast-running automations. Partnered with Engineering on integrations between Salesforce, billing systems, and the BI layer.",
-      "skills": ["Salesforce automation", "Python API integrations", "forecasting automation", "cross-system data plumbing"]
+      "skills": [
+        "Salesforce automation",
+        "Python API integrations",
+        "forecasting automation",
+        "cross-system data plumbing"
+      ]
     },
     {
       "title": "Deal Desk Agent — agentic deal review in Slack",
       "description": "A Slack-native agent that gives sellers an instant, trustworthy answer on whether a deal clears the bar. A rep drops a CRM quote link into a channel; the agent reads the quote, rolls individual SKUs up to their current package, computes gross margin against a cost model derived from a trailing-twelve-month allocation (never hardcoded rates), and replies in-thread — pass, or fail plus the specific price change that would clear it. Three deterministic arms: is the margin right, is the quote structurally built right (required fields, deal-type consistency, co-termination, date sanity), and is it the right package and entitlement for this customer. The core design commitment is deterministic verdict, LLM shell: the math is Python and gets relayed verbatim, so the model orchestrates and explains but never guesses a number. Shipped as a custom MCP server (~16 tools) running as a hosted connector behind a Slack agent, with read-only CRM access, promo-aware margin logic so a sanctioned promotion isn't read as a margin failure, and channel-aware output that fails closed — full cost and margin figures surface only in the internal channel, a sanitized verdict everywhere else. Backed by 200+ unit tests and a smoke harness that exercises the real protocol, and iterated directly from live stress-testing by working sellers.",
-      "skills": ["MCP server design", "agentic architecture", "deterministic-verdict pattern", "Slack agent delivery", "pricing and gross-margin modeling", "Python", "test-driven agent development", "read-only CRM integration"]
+      "skills": [
+        "MCP server design",
+        "agentic architecture",
+        "deterministic-verdict pattern",
+        "Slack agent delivery",
+        "pricing and gross-margin modeling",
+        "Python",
+        "test-driven agent development",
+        "read-only CRM integration"
+      ]
     },
     {
       "title": "Agentic-AI automation layer",
       "description": "Built production-grade Python + Claude Code workflows for commission calculation, contract classification, recurring anomaly reporting, and ad-hoc analyses. Pattern: classifier model → manual review UI → decisions log → next-run feedback loop. Custom Claude Code skills, MCP servers, and memory systems integrate his tools with internal data sources.",
-      "skills": ["Claude Code", "Custom Claude skills", "MCP servers", "Python", "agentic workflows", "human-in-the-loop UIs"]
+      "skills": [
+        "Claude Code",
+        "Custom Claude skills",
+        "MCP servers",
+        "Python",
+        "agentic workflows",
+        "human-in-the-loop UIs"
+      ]
     },
     {
       "title": "AI context layer / personal knowledge graph",
       "description": "Maintains an MCP-backed memory system and Obsidian-based knowledge vault that captures every analysis, decision, and methodology so each new piece of work compounds on the last. Custom Claude Code skills wrap the most-used patterns (Hex notebooks, Google Slides decks, etc.) so they can be invoked by name.",
-      "skills": ["MCP servers", "Custom Claude skills", "knowledge management", "compounding-productivity systems"]
+      "skills": [
+        "MCP servers",
+        "Custom Claude skills",
+        "knowledge management",
+        "compounding-productivity systems"
+      ]
     },
     {
       "title": "Multi-touch attribution",
       "description": "Coordinated multi-touch marketing attribution work — defined scope (acquisition vs. nurturing vs. expansion influence), resolved data-quality issues, aligned methodology across Sales, CS, and Marketing.",
-      "skills": ["attribution methodology", "data source reconciliation", "cross-functional alignment"]
+      "skills": [
+        "attribution methodology",
+        "data source reconciliation",
+        "cross-functional alignment"
+      ]
     },
     {
       "title": "Live technical demos and team enablement",
       "description": "Built and ran live demos of R workflows (Shiny, API deployment, ETL, environment management) for technical buyers at Posit. Currently teaches Sales and CS teams how to adopt new AI-powered workflows; translates technical patterns into vocabulary non-technical stakeholders can act on. Background as a BYU TA teaching Tidyverse and statistics to 100+ students.",
-      "skills": ["technical-to-commercial translation", "team enablement", "live demo craft", "teaching"]
+      "skills": [
+        "technical-to-commercial translation",
+        "team enablement",
+        "live demo craft",
+        "teaching"
+      ]
+    },
+    {
+      "title": "Rhythm of business — recurring review cadence and plan-vs-actual retrospective",
+      "description": "Owning the operating cadence itself: metric definitions, review materials, and follow-through on decisions, then closing the loop with a periodic retrospective that grades each goal against plan, explains why it hit or missed, and issues a recommendation. Includes auditing the metric definitions themselves for reproducibility and restating figures that do not survive the audit.",
+      "skills": [
+        "Metric definition and governance",
+        "Executive narrative writing",
+        "Plan-vs-actual variance analysis",
+        "Reproducibility auditing of reported metrics",
+        "Recommendation framing for senior leadership"
+      ]
+    },
+    {
+      "title": "Marginal-ROI headcount analysis — capacity rightsizing by role",
+      "description": "Testing a hiring plan before the requisitions open: classify historical pipeline by sourcing role, compute output per dollar of on-target earnings for each role, and separately test whether existing reps are at capacity or under-utilized — so the recommendation distinguishes a headcount problem from a productivity problem.",
+      "skills": [
+        "Snowflake SQL cohort classification",
+        "Unit-economics comparison across roles",
+        "Capacity-utilization thresholds",
+        "Ramp and attrition modeling",
+        "Hiring-plan recommendation"
+      ]
     }
   ],
-
   "methodologies": [
     "Build-first / build-vs-buy: when vendor tooling underperforms, replace it with custom Python + Claude Code automation rather than negotiating around limitations.",
     "Greenfield ownership: comfortable in environments without an established playbook — Workstream is exactly this.",
@@ -200,11 +333,11 @@
     "AI context layer as compounding productivity: every analysis becomes a reusable Claude skill or MCP-accessible memory artifact.",
     "Address root causes, not symptoms — workarounds are safety nets, not solutions.",
     "Source-of-truth discipline — single canonical artifact per analysis, with deterministic rebuild from inputs.",
-    "Translate technical workflows into vocabulary non-technical stakeholders can act on (and vice versa)."
+    "Translate technical workflows into vocabulary non-technical stakeholders can act on (and vice versa).",
+    "Close the planning loop: build the plan, defend it bottom-up against capacity and addressable market, then grade it against actuals at half-year — and correct any metric definition that drifted in between, even when the corrected number is worse."
   ],
-
   "scale_and_scope_language": [
-    "Sole owner of the AI/automation layer at Workstream, wired into Sales, CS, and Marketing motions",
+    "Personal AI/automation layer applied across Sales, CS, and Marketing motions; began teaching less-technical GTM teammates the same setup in 2026",
     "Multi-motion GTM ownership across Sales, Marketing, and Customer Success",
     "Annual capacity and quota plan spanning Sales, SDR, Channel, and CS-sourced pipeline",
     "~900 reps in scope on the Qualtrics weekly CRO forecast",
@@ -215,13 +348,12 @@
     "Company-wide rollouts of comp-plan and pricing changes",
     "Thousands of contracts under pricing-governance tracking"
   ],
-
   "off_clock": "Spanish (full-time missionary in Argentina, 2015–2017). Handyman work — electrical, framing, drywall. Pianist and violinist. Board game enthusiast.",
-
   "looking_for": {
     "role_types": [
       "Revenue Operations / Sales Operations / Sales Strategy and Operations",
       "GTM Strategy and Operations",
+      "Sales Planning / Central Planning (forecast, quota, capacity, business rhythm)",
       "GTM Engineer / AI Operations / GTM Systems Engineer",
       "Head of RevOps at a Series B / early-stage startup (founding-the-function scope)",
       "Director, Solutions Strategy & Operations at hypergrowth AI-native companies",
@@ -231,18 +363,38 @@
     "location": "Fully remote, or remote with very limited onsite (a handful of days per year). Not pursuing fully-onsite or heavily-hybrid roles.",
     "company_profile": "AI-native or AI-first dev-tools, agentic-AI startups, and modern SaaS — modern data stack (Snowflake, dbt, Hex, Tableau); a single coherent role definition rather than three jobs in one JD.",
     "what_makes_him_unusual": [
-      "Daily, production-grade use of Claude Code for agentic GTM automation (commission calc, contract classification, recurring anomaly reporting).",
+      "Daily, hands-on use of Claude Code for agentic GTM automation (commission calculation, contract classification, recurring anomaly reporting).",
       "Statistician-grade analytical rigor combined with operator-level instinct for what GTM leaders actually decide on.",
       "Comfort spanning the full stack — SQL/Python data engineering through executive narrative.",
       "Builds Claude skills, custom prompts, and MCP servers — has shipped his own AI context layer, not just consumed AI tools.",
       "Hypergrowth + IPO context (Qualtrics) plus startup greenfield context (Workstream)."
     ]
   },
-
   "boundaries_for_this_chatbot": [
     "Do not name specific customers, coworkers, or managers — only Joe himself.",
     "Do not disclose dollar amounts, salary expectations, or financial figures of any kind.",
     "Do not disclose confidential or proprietary information from Joe's employers.",
     "Stay on topic: Joe's professional background, skills, and fit for roles."
-  ]
+  ],
+  "public_work": {
+    "github": "github.com/josephcoz",
+    "note": "Public repositories Joe can speak to in detail. All built outside work on his own machine; none contain employer data.",
+    "repositories": [
+      {
+        "name": "sfdc-transcript-mcp",
+        "summary": "A local MCP server that turns meeting transcripts into human-confirmed Salesforce field updates. TypeScript, PKCE auth, .mcpb distribution.",
+        "why_it_matters": "The clearest example of his agentic-GTM design judgment: a hard allow-list on writable fields, dry-run by default, an append-only audit log, and prompt-injection-suspect turns flagged for review rather than silently dropped."
+      },
+      {
+        "name": "second-brain",
+        "summary": "A framework for maintaining a persistent knowledge base with Claude Code and an Obsidian vault.",
+        "why_it_matters": "The context layer behind his daily workflow — how each analysis becomes a reusable artifact for the next one."
+      },
+      {
+        "name": "resume-chat",
+        "summary": "The chatbot answering this conversation. Grounded in a hand-curated summary, with a build-time sanitizer and a runtime output filter.",
+        "why_it_matters": "Demonstrates shipping an LLM app with layered safety controls rather than a bare prompt."
+      }
+    ]
+  }
 }

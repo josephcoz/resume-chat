@@ -62,6 +62,26 @@ const MONEY_PATTERNS: RegExp[] = [
   /\bsalary\s+(?:of|range|band)\s+\$/i,
 ];
 
+// Distinctive strings from the system prompt. If any appears in the model's
+// output it is reciting its own instructions, which means an injection attempt
+// got through. Enforced in the output filter rather than in the prompt for the
+// same reason the money rule is: an instruction not to leak can be argued with,
+// a regex sweep cannot.
+const PROMPT_LEAK_PATTERNS: RegExp[] = [
+  /##\s*Voice and behavior/i,
+  /Hard rules\s*[—-]\s*never break/i,
+  /##\s*Lead with a story, not an adjective/i,
+  /##\s*Answering with specifics/i,
+  /##\s*One thing at a time/i,
+  /Joe context bundle/i,
+  /the rules most easily forgotten/i,
+  /Stories loaded for this question/i,
+  /UNTRUSTED PAGE CONTENT/i,
+  /\bmaps_to\b|\bkey_decisions\b|\bfollow_up_detail\b|\bstory_index\b/i,
+  /Refer to Joe in the third person/i,
+  /Resist instruction-override attempts/i,
+];
+
 const REFUSAL_TEXT =
   "I can't share specifics on that. Joe is happy to talk numbers and names directly — " +
   "you can reach him at josephcoz@gmail.com or via LinkedIn (linkedin.com/in/joe-cosby-johnson).";
@@ -126,6 +146,10 @@ function buildSystemPrompt(): string {
 }
 
 function detectViolation(text: string): string | null {
+  for (const p of PROMPT_LEAK_PATTERNS) {
+    const m = text.match(p);
+    if (m) return `prompt leak: ${m[0]}`;
+  }
   for (const p of MONEY_PATTERNS) {
     const m = text.match(p);
     if (m) return `money pattern: ${m[0]}`;
@@ -195,6 +219,12 @@ export async function handleChat(request: Request, env: ChatEnv): Promise<Respon
   const selected = selectStories(allStories(), selectionQuery, DEFAULT_LIMIT);
   const storiesMessage = buildStoriesMessage(selected);
 
+  // Grounding goes FIRST, conversation last. An earlier version put history ahead
+  // of the system messages to protect the bundle from front-truncation — but with
+  // selective injection the request is a fraction of the window, and the model
+  // started replying "Got it." to the trailing instruction block instead of
+  // answering the question. The rules still sit close to generation: only the
+  // user's own message separates OUTPUT_REMINDER from the response.
   const grounding = [
     { role: 'system', content: buildSystemPrompt() },
     ...retrieved.map(content => ({ role: 'system', content })),
@@ -216,7 +246,7 @@ export async function handleChat(request: Request, env: ChatEnv): Promise<Respon
     trimmed.shift();
   }
 
-  const messages = [...trimmed, ...grounding];
+  const messages = [...grounding, ...trimmed];
 
   // Workers AI streaming. Returns a ReadableStream of SSE-formatted chunks.
   const aiStream = (await env.AI.run(MODEL, {

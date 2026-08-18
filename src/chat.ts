@@ -5,6 +5,7 @@
 // model never has those in context, but this is belt-and-suspenders.
 
 import publicBundle from '../context/joe-public.json';
+import { extractUrls, fetchPageText, buildRetrievedMessage } from './linkFetch';
 import { SYSTEM_PROMPT as systemPromptText } from './_systemPrompt';
 
 interface ChatEnv {
@@ -12,8 +13,11 @@ interface ChatEnv {
 }
 
 const MODEL = '@cf/meta/llama-3.3-70b-instruct-fp8-fast';
-const MAX_TOKENS = 600;
+const MAX_TOKENS = 1100;
 const MAX_HISTORY_MESSAGES = 20;
+// Only the newest user turn is scanned for links, and only this many are
+// fetched per request — a hard ceiling on work a single caller can trigger.
+const MAX_URLS_PER_TURN = 2;
 
 // Same lists as scripts/sanitize-check.js — kept in sync by hand. If a
 // blocklisted name or money pattern *ever* shows up in a model token, abort
@@ -112,9 +116,22 @@ export async function handleChat(request: Request, env: ChatEnv): Promise<Respon
     content: String(m.content ?? '').slice(0, 4000),
   }));
 
+  // Link retrieval. The model cannot browse, so a pasted URL would otherwise be
+  // answered from the slug alone. Fetch it here and hand it over as clearly
+  // labelled untrusted data. Failures are reported to the model, not swallowed:
+  // "I couldn't open that, please paste it" beats a confident invented answer.
+  const retrieved: string[] = [];
+  const lastUserText = safeHistory[safeHistory.length - 1]?.content ?? '';
+  const urls = extractUrls(lastUserText).slice(0, MAX_URLS_PER_TURN);
+  if (urls.length > 0) {
+    const results = await Promise.all(urls.map(u => fetchPageText(u)));
+    for (const r of results) retrieved.push(buildRetrievedMessage(r));
+  }
+
   const messages = [
     { role: 'system', content: buildSystemPrompt() },
     ...safeHistory,
+    ...retrieved.map(content => ({ role: 'system', content })),
   ];
 
   // Workers AI streaming. Returns a ReadableStream of SSE-formatted chunks.

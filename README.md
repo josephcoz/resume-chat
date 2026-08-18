@@ -11,10 +11,10 @@ reach out to me directly.
 ## How it's built
 
 - **Frontend:** static HTML/CSS/JS in `public/`. No framework.
-- **Backend:** a single Cloudflare Pages Function at `functions/api/chat.ts`.
-  Calls Cloudflare Workers AI (Llama 3.3 70B Instruct) via the `AI` binding —
-  no API key in the repo.
-- **Hosting:** Cloudflare Pages. Auto-deploy from `main`.
+- **Backend:** a Cloudflare Worker (`src/index.ts` → `src/chat.ts`) serving the
+  static assets via the `ASSETS` binding. Calls Cloudflare Workers AI
+  (Llama 3.3 70B Instruct) via the `AI` binding — no API key in the repo.
+- **Hosting:** Cloudflare Workers (`resume-chat.josephcoz.workers.dev`).
 
 ## Safety story
 
@@ -30,7 +30,7 @@ Three layers of defense, in order of importance:
    ```bash
    npm run lint
    ```
-3. **Runtime output filter.** `functions/api/chat.ts` regex-sweeps the
+3. **Runtime output filter.** `src/chat.ts` regex-sweeps the
    streamed response chunk-by-chunk. If a blocklisted token slips through
    the model anyway, the function aborts the stream and emits a generic
    refusal message.
@@ -38,6 +38,31 @@ Three layers of defense, in order of importance:
 The system prompt (`context/system-prompt.md`) adds a fourth layer of
 behavioral guardrails, but the bundle is the primary defense — the model
 literally cannot leak what isn't there.
+
+### Link retrieval
+
+The model has no browsing ability. Without help it answers a pasted job-posting
+URL from the slug alone — inventing plausible requirements and matching against
+them. That failure is silent, so `src/linkFetch.ts` fetches the page server-side
+and hands it over as explicitly-labelled untrusted data. Guards:
+
+- **https only**, public hostnames only; loopback, RFC1918, link-local and
+  `.internal` / `.local` are rejected (`isSafeUrl`).
+- **Bounded work** — 8s timeout, 512KB read ceiling, 10k characters to the
+  model, at most 2 URLs per turn, newest user message only.
+- **Currency stripped on the way in.** Partly Joe's no-compensation rule, partly
+  mechanical: the runtime output filter aborts the stream on a money pattern, so
+  a posting's salary band echoed back mid-answer would look like a crash.
+  Redacting on ingest means the model never sees it.
+- **Injection containment** — retrieved text is wrapped in an untrusted-data
+  envelope; the system prompt instructs the model to treat it as data, ignore
+  embedded instructions, and tell the user when it finds them.
+
+Failures are reported to the model rather than swallowed, so it says "I couldn't
+open that, please paste the text" instead of guessing.
+
+Run `npm test` to exercise URL validation, HTML extraction, and redaction
+locally — no network, no Workers runtime.
 
 ## Layout
 

@@ -397,36 +397,35 @@
       }
     ]
   },
-  "stories_how_to_use": "Use these when asked about fit, experience in an area, or 'tell me about a time'. Pick the ONE story that best fits and tell it — situation, task, action, and result if present. Some have no result because the outcome is a figure Joe does not disclose; tell those as situation/task/action and stop, rather than inventing an outcome or padding with adjectives. Never merge two stories. Never describe a story in the abstract when you can tell it.",
+  "stories_how_to_use": "Use these when asked about an area of experience, whether Joe fits a requirement, or 'tell me about a time'. Find the story whose maps_to covers the topic and TELL IT — situation, task, what he actually did, and the outcome if present. `key_decisions` holds the judgment calls: what he chose, and what he chose NOT to do and why. That is what makes an answer sound like someone who was there rather than someone reading a resume. `follow_up_detail` holds specifics for when a recruiter pushes — the method, the control, the thing he checked before trusting a number. Reach for it on a follow-up instead of restating the story more vaguely. Some stories have no `result` because the outcome is a figure Joe does not disclose; tell those through the action and stop, rather than inventing an outcome or padding with adjectives. Never merge two stories, and never describe a story in the abstract when you could tell it.",
   "stories": [
     {
       "id": "annual_plan",
-      "title": "Built the annual pipeline plan the company now grades itself against",
+      "title": "Built the annual pipeline plan the company grades itself against",
       "maps_to": [
         "annual planning",
         "bottoms-up revenue models",
         "planning source of truth",
         "channel splits",
-        "variance to plan"
-      ],
-      "situation": "Leadership set an annual pipeline target top-down. There was no agreed split across sourcing channels, no shared seasonality assumption, and one channel's implied growth looked absurd enough on its face to discredit the whole model in review.",
-      "task": "Turn a single top-down number into a defensible plan: allocate it across every sourcing channel, on a ramp each channel owner would accept.",
-      "action": "Built it bottom-up. Derived the half-over-half shape from prior-year actuals rather than splitting evenly. Replaced a static allocation for the outbound team with a ramp model driven by actual hire dates and per-rep productivity percentiles, and deliberately capped one outlier rep's contribution so the plan didn't depend on a single person. Gave every channel a year-over-year delta and a risk rating. Then wrote the defense alongside it — for each channel, the specific rebuttal to 'that number is too high,' grounded in what that channel had actually delivered.",
-      "result": "Adopted as the planning baseline. Leadership grades company key results against it, and Joe wrote the half-year retrospective that does the grading."
-    },
-    {
-      "id": "attribution_baseline",
-      "title": "Killed a growth number that would have discredited the plan",
-      "maps_to": [
         "variance to plan",
-        "data integrity",
-        "forecast hygiene",
-        "attribution"
+        "target setting"
       ],
-      "situation": "One channel in the annual plan carried a year-over-year growth figure large enough that reviewers stopped reading the rest of the model.",
-      "task": "Establish whether the number was real before the plan went in front of leadership.",
-      "action": "Traced the prior-year baseline to a legacy attribution model in the warehouse and tested it against the newer activation-touch model across every opportunity in the period. The two agreed on only a small minority of the opportunities both covered, and the legacy model was blind to hundreds of opportunities outright — it had never seen a large share of that channel's contribution.",
-      "result": "The true baseline was several times what the legacy model reported, so the real growth rate was a modest fraction of the headline. The weakest-looking number in the plan became one of the best-supported, and the reframe was reusable every time someone challenged it."
+      "situation": "Leadership set an annual pipeline target top-down. There was no agreed split across the six sourcing channels, no shared seasonality assumption, and one channel carried an implied growth rate large enough that reviewers stopped reading the rest of the model.",
+      "task": "Turn a single top-down number into a plan each channel owner would actually sign up to — and that would survive a room full of people looking for a reason to push back on their own number.",
+      "action": "He built it bottom-up rather than allocating. The half-over-half shape came from the prior year's observed seasonality instead of an even split. For the outbound team he threw out a static dollar allocation and replaced it with a ramp model driven by actual hire dates and per-rep productivity percentiles, so the plan reflected who was actually on the floor and when. He deliberately capped the contribution of the single highest-producing rep well below her historical average, so the plan wouldn't depend on one person staying. Every channel got a year-over-year delta and a risk rating. Then he wrote the defense alongside the plan — for each channel, the specific rebuttal to \"that number is too high,\" grounded in what that channel had actually delivered.",
+      "key_decisions": [
+        "Derived the seasonal shape from prior-year actuals rather than splitting the year evenly — the natural shape was already close to what one team needed, which made that team's ask defensible rather than arbitrary.",
+        "Replaced a static allocation with a ramp model for the outbound team, because the increase was a headcount bet, not a productivity bet — the argument becomes 'we are adding people,' not 'do more.'",
+        "Capped the top rep's modeled contribution below her actual average, accepting a lower plan number in exchange for removing single-person dependency.",
+        "Shifted budget between two channels to give the most mature one a shape matching its own history — the least defensible ask in the model was the one with the least track record, so the mature channel absorbed the front half.",
+        "Wrote the pushback rebuttals as part of the deliverable rather than waiting to be challenged in the room."
+      ],
+      "follow_up_detail": [
+        "The most defensible channel was the mature one: its second-half ask was only marginally above the prior year's actual, so the response to 'this is high' is 'this is last year plus a rounding error.'",
+        "The hardest ask was the self-sourced seller channel, and he said so in the document rather than defending it — the honest framing was that it depended entirely on hires landing early enough to be productive in the second half.",
+        "Per-rep productivity assumptions used the median of historical performance, with the lower and upper quartiles stated alongside so a reader could see the spread rather than a single point estimate.",
+        "The plan became the baseline that the half-year retrospective graded against, which is the actual proof it was adopted rather than filed."
+      ]
     },
     {
       "id": "capacity_marginal_roi",
@@ -435,81 +434,824 @@
         "quota and capacity planning",
         "CAC-rightsized capacity models",
         "investment to expected output",
-        "seller-level goals"
+        "seller-level goals",
+        "headcount planning"
       ],
-      "situation": "The go-to-market org's capacity model called for hiring a block of account executives — a large committed cost — but nothing established that the existing reps were actually at capacity.",
-      "task": "Validate the hiring plan before the requisitions opened, working with the sales leader and the team lead who owned it.",
-      "action": "Started from a hypothesis: a lower-cost sourcing role generates more incremental pipeline per dollar than an account executive, because account executives draw from a finite pool of opportunities while sourcing roles expand it. Classified over a year of opportunity data by which role sourced it, built a return table on pipeline generated per dollar of on-target earnings by role, then filtered to tenured and currently-active reps only and tested their actual opportunities per month against the at-capacity threshold. Cross-checked the CRM activity table to separate a genuine capacity ceiling from a coaching problem.",
-      "result": "The sourcing role returned several times the pipeline per dollar even under the most conservative assumptions, and tenured reps were under-utilized rather than saturated — a capacity-utilization finding, not just a hiring one. The hiring mix was reallocated and that team more than doubled."
+      "situation": "The go-to-market capacity model called for hiring a block of account executives — a large committed cost in salary alone — but nothing in the plan established that the existing reps were actually at capacity. The assumption was simply that more sellers meant more pipeline.",
+      "task": "His manager and the team lead who owned the plan asked him to validate it before the requisitions opened.",
+      "action": "He started from a stated hypothesis rather than an open-ended analysis: a lower-cost sourcing role generates more incremental pipeline per dollar than an account executive, because account executives draw from a finite pool of opportunities while sourcing roles expand it — and a sourcing hire is effectively a long-ramping seller, so you get two roles out of one ramp. He then classified over a year of opportunity data by which role actually sourced each one, and built a return table on pipeline generated per dollar of on-target earnings by role. Separately, he filtered to tenured and currently-active reps only and tested their actual opportunities per month against the threshold the organization treated as 'at capacity.' Finally he cross-checked the activity records to distinguish a genuine capacity ceiling from a coaching problem, so the recommendation couldn't be dismissed as blaming the reps.",
+      "key_decisions": [
+        "Framed it as a hypothesis to be tested rather than a request to model, which meant the analysis could come back against his own prior.",
+        "Compared roles per dollar of on-target earnings rather than per head, because the two roles cost very different amounts and a per-head comparison would have flattered the more expensive one.",
+        "Restricted the capacity test to tenured, currently-active reps — including ramping or departed reps would have made the team look under-capacity for reasons unrelated to the question.",
+        "Ran the activity cross-check specifically to rule out the alternative explanation, so the finding survived the obvious objection.",
+        "Delivered it as a reallocation of the hiring mix rather than a cut, which is why it was adopted rather than resisted."
+      ],
+      "follow_up_detail": [
+        "The per-dollar advantage held at the most conservative assumptions and widened considerably at the observed peak — he led with the conservative number.",
+        "The capacity finding was the more uncomfortable half: tenured reps were running well below the organization's own stated at-capacity threshold, with one materially below it.",
+        "The top individual pipeline generators in the entire organization were all in the lower-cost sourcing role, which made the argument concrete rather than theoretical.",
+        "The team more than doubled as a result, and he later revisited the conclusion in the half-year retrospective — where he found that this channel's pipeline converts at the lowest rate of any source, which turned the follow-on recommendation into a coverage-versus-conversion rebalance rather than 'hire more of them.'"
+      ]
     },
     {
-      "id": "metric_baseline_drift",
-      "title": "Found a flagship metric that recalculated its own baseline, and restated it downward",
+      "id": "forecast_regime_cone",
+      "title": "Rebuilt the forward forecast after backtesting showed the basis was wrong",
       "maps_to": [
-        "data integrity",
-        "trusted reporting",
-        "rhythm of business",
-        "numbers trusted without re-checking"
+        "owning forecasting",
+        "bottoms-up revenue models",
+        "revenue point of view",
+        "scenario modeling",
+        "forecast hygiene"
       ],
-      "situation": "A flagship growth metric on the monthly leadership slide was reporting roughly triple its true value. Nobody had reproduced it from source.",
-      "task": "Grade the half-year honestly, which meant reproducing every headline number rather than restating the deck.",
-      "action": "Rebuilt the metric from the underlying data and found it recalculated its own starting baseline on every refresh — as the underlying history matured, the baseline rose and the net-new figure fell with it. The number on the slide had never been reproducible; a fresh run of the same slide printed something far lower.",
-      "result": "Pinned the baseline to a fixed prior-year-end anchor so it could not drift again, restated the figure sharply downward, and presented the honest read to senior leadership with the explanation of why the old one was wrong. It was a miss against either number."
+      "situation": "The executive team needed a forward revenue landing forecast they could defend. The first build read essentially flat, which contradicted the executive dashboard showing the book had grown materially over the same period.",
+      "task": "Resolve the contradiction, and produce a forecast whose assumptions survive being challenged.",
+      "action": "Rather than reconciling the two views, he treated the discrepancy as a testable question and backtested the forecast basis itself: anchored at the start of the period, what would each candidate basis have predicted? Every trailing average — including the one he had used — predicted the book to shrink, against actual growth. Trailing levels were structurally blind to regime change. So he rebuilt on a recency-weighted basis and decomposed the growth into durable and transient halves, carrying only the durable share forward. He then expressed the output as a three-scenario cone where each scenario is a coherent regime rather than an arbitrary shock — the downside case is 'the recent retention improvement fully reverses,' anchored to a state the business had actually occupied a year earlier. Open pipeline is weighted by a custom point-in-time win-probability model rather than the CRM's stage probability.",
+      "key_decisions": [
+        "Backtested the basis rather than reconciling to the dashboard — the question 'which method would have been right' is answerable, 'which number is correct' is not.",
+        "Defined scenarios as observed regimes rather than percentage shocks, so every case can be pointed at a period when the business actually behaved that way.",
+        "Separated durable from transient growth and carried only the durable share, which produced a lower and more defensible central estimate.",
+        "Replaced the CRM's stage probability with a model trained point-in-time, after establishing that several tempting features were leaks — fields stamped at or after close, and a closed-lost reason populated only on lost deals.",
+        "Let the backtest overrule his own prior in both directions: for one component the flat trailing method won outright and he shipped it, noting that extrapolating a recent rise would have been overfitting noise."
+      ],
+      "follow_up_detail": [
+        "The win-probability model beat the CRM's stage probability decisively on both discrimination and dollar-weighted error.",
+        "The structural finding underneath it: deals closing within a month win at a far higher rate than deals that have been open longer, so a blended all-deals rate badly overstates the prior for deals currently still open — which is why the CRM overstates open-pipeline value roughly twofold.",
+        "He ran an ablation showing the human-entered at-risk flag added essentially nothing to the churn model, which he treated as a defensibility win rather than a negative result.",
+        "On a related model he reported honestly that a machine-learning approach did not beat the simple flat method on aggregate dollars, and recommended using it for the shape and as a prioritized worklist instead — the win was actionability, not precision."
+      ]
     },
     {
-      "id": "bookings_to_billings",
+      "id": "attribution_baseline",
+      "title": "Killed a growth number that would have discredited the plan",
+      "maps_to": [
+        "variance to plan",
+        "data integrity",
+        "forecast hygiene",
+        "attribution",
+        "planning source of truth"
+      ],
+      "situation": "One channel in the annual plan carried a year-over-year growth figure so large that it became the only thing anyone discussed in review. It read as either a fantasy target or a typo, and it was undermining confidence in the rest of the model.",
+      "task": "Establish whether the number was real before the plan went in front of leadership.",
+      "action": "He traced the prior-year baseline to a legacy attribution model in the warehouse and tested it directly against the newer activation-touch model across every opportunity in the period, rather than assuming either was right. The two agreed on only a small minority of the opportunities both covered, and the legacy model was blind to hundreds of opportunities outright — it had simply never seen a large share of that channel's contribution. The baseline everyone was dividing by was an artifact of a broken measurement system, not a statement about the business.",
+      "key_decisions": [
+        "Tested the two models against each other opportunity by opportunity rather than comparing totals, which is what exposed the low agreement rate — the totals alone would have looked merely different.",
+        "Reported the real growth rate rather than quietly changing the target, so the plan number stayed and the framing changed.",
+        "Kept the reframe as a reusable rebuttal in the defensibility document, since the objection was guaranteed to recur every time the number was presented.",
+        "Distinguished a data-hygiene issue in the current-period figure from an attribution problem, and declined to discount the total for it — the opportunities were real, they just needed classification.",
+        "Reported the corrected baseline rather than quietly lowering the target, so the plan number survived and only the framing changed — which mattered, because the target itself turned out to be reasonable."
+      ],
+      "follow_up_detail": [
+        "The corrected growth rate was a modest fraction of the headline — a normal stretch rather than an implausible multiple.",
+        "The quarter-to-date run rate at the time of the analysis was already annualizing well past the full-year target, which turned the weakest-looking line in the plan into one of the better-supported ones.",
+        "He named the remaining honest risk rather than declaring victory: the pace might be seasonal rather than structural, and there was no formal motion designed to sustain it — 'it's happening naturally, but we haven't designed it,' which he framed as both a risk and an opportunity.",
+        "The reusable form of the rebuttal: the prior-year figure came from a model that agreed with the current one on a small minority of jointly-covered opportunities and never saw hundreds of others, so the growth rate was comparing two different measurement systems rather than two years of performance."
+      ]
+    },
+    {
+      "id": "realization_not_promises",
+      "title": "Replaced a contractual promise with what actually shows up",
+      "maps_to": [
+        "forecast hygiene",
+        "revenue point of view",
+        "Finance partnership",
+        "deal-signal discipline"
+      ],
+      "situation": "A senior leader asked for a forward revenue forecast built on contractually promised amounts — revenue the company was owed as promotional pricing expired. The obvious answer was to sum the contracts.",
+      "task": "Pressure-test that number before it reached a board narrative.",
+      "action": "He backtested every historical customer-and-event pair over more than a year with a fixed post-expiry window, asking a single question: of the amount contractually promised, how much actually appeared in revenue? Then he split the answer by product family and found the two behave completely differently — fixed-price products largely do land, after an onboarding lag, while per-employee usage products barely realize at all, because the contracted quantity is a ceiling untethered from actual billable headcount. A later version of the same model caught a scope error in its own numerator that was inflating the realization rate, and he shipped the corrected version even though it cut the forecast substantially.",
+      "key_decisions": [
+        "Measured realization instead of assuming it, which is the whole move — the promised number was never in question, only whether it arrives.",
+        "Split by product family rather than reporting a blended rate, because the blend hid that one family behaves nothing like the other and the mix determines the answer.",
+        "Reframed the output from a revenue forecast into two actionable things: a small pool of clearly-bad contracted revenue with commissions already paid, and realization curves to plan around.",
+        "Surfaced the rep-level over-quotes he found as a coaching input rather than an enforcement one.",
+        "Traded a plausible-looking forecast for an honest one and said so explicitly — the earlier version 'looked plausible at the customer level' but was scope-mismatched."
+      ],
+      "follow_up_detail": [
+        "Blended realization came in around a tenth of the promised amount, with the majority of individual events realizing almost nothing.",
+        "Fixed-price products reach roughly half realization by six months; usage-priced products plateau in the single digits within three and stay there.",
+        "The methodology detail that makes it reproducible: realization measured per line as the change in recurring revenue around that line's billing start, annualized and clipped at a stated ceiling to bound unrelated concurrent movement.",
+        "He documented where the corrected model still misses — the residual error concentrates in cells where the product mix differs from the training cohort, which is why the next version needs per-product curves rather than two coarse buckets."
+      ]
+    },
+    {
+      "id": "booked_to_billed",
       "title": "Closed the gap between what was signed and what was invoiced",
       "maps_to": [
         "Finance partnership",
         "trusted reporting",
         "revenue point of view",
+        "data integrity",
+        "units to revenue"
+      ],
+      "situation": "Bookings were being reported as though they became revenue. Nobody had reconciled signed recurring revenue against what customers were actually billed, so the gap between the two was invisible in every executive report.",
+      "task": "Quantify where signed revenue does and does not reach the invoice, and make the answer actionable rather than alarming.",
+      "action": "He compared booked monthly revenue against trailing billed revenue for every customer signed in the prior half-year, then refused to report the total as a single number. Instead he classified each gap account three ways using contraction records, churn flags, and implementation status: documented attrition already being managed, accounts legitimately mid-implementation and not yet billing, and silent leakage with no record anywhere. The classification logic was published as an explicit decision table with a stated priority order, so the buckets were reproducible and arguable rather than a judgment call. He drove churn dating off the revenue signal rather than the CRM's churn-date field, after finding the two disagreed on a meaningful share of cases.",
+      "key_decisions": [
+        "Split one alarming number into three buckets with three different actions, because the aggregate figure would have triggered a fire drill over a gap that was mostly explained.",
+        "Built the in-implementation signal from a custom object nobody had documented, using a two-condition test — project status in an in-flight set and first payroll run not yet recorded — which reclassified a large share out of the scary bucket.",
+        "Published the classification as a decision table rather than describing it in prose, so anyone could challenge a specific rule instead of the conclusion.",
+        "Chose the revenue-derived churn date over the CRM field and said why, rather than silently picking one.",
+        "Listed his own limitations in the deliverable, including that the silent bucket is point-in-time and shrinks whenever someone updates a record."
+      ],
+      "follow_up_detail": [
+        "The genuinely unexplained bucket was the smallest of the three, which is what made it actionable — a specific, named list rather than a category.",
+        "Root cause of the silent bucket: rates were being reduced outside the CRM, so there was no contraction record to find. That is a process gap, not a data gap.",
+        "The in-implementation bucket revealed a realization curve worth planning around — payroll revenue ramps over several months after signature rather than landing at contract start.",
+        "He codified the canonical billed-revenue definition out of this work so bookings and billings stopped being conflated in executive reporting, and banked the undocumented object's semantics as data-dictionary entries."
+      ]
+    },
+    {
+      "id": "kr_retrospective",
+      "title": "Graded the company against its own plan at half-year",
+      "maps_to": [
+        "rhythm of business",
+        "WBR/QBR cadence",
+        "executive reporting",
+        "variance to plan",
+        "trusted reporting"
+      ],
+      "situation": "The first half closed with five trackable company key results. What existed was a scorecard — the numbers, hit or missed. Nobody had written why, and one of the headline figures on the monthly leadership slide was not reproducible from source.",
+      "task": "Write the retrospective for senior leadership: not what happened, but why each result landed where it did and what to do about it.",
+      "action": "He reproduced every headline number from source rather than restating the deck, which surfaced that the flagship growth metric was recalculating its own starting baseline on every refresh — as underlying history matured the baseline rose and the reported net-new figure fell with it. He pinned it to a fixed prior-year-end anchor so it could not drift again, restated the figure sharply downward, and presented the honest read with the explanation. Then he found the actual story in the split rather than the scores: every result the company hit was a sales-motion or retention goal, and every one it missed was an adoption or advocacy goal. The engine works; activating the installed base is where it is behind. He diagnosed each miss to a mechanism — the biggest was a pace problem, needing roughly six times the current monthly run rate, with one brand effectively frozen all half and named as the first place to look.",
+      "key_decisions": [
+        "Reproduced every number from source instead of restating the slide, which is the only reason the metric-stability problem was found at all.",
+        "Interrogated a result the company *hit* rather than banking it — clearing a pipeline target says nothing about whether the pipeline is any good.",
+        "Tested the retention result against its most obvious objection by tracing where every customer from a year prior actually went, separating true churn from customers who upgraded out of the segment.",
+        "Refused to let one channel read as a miss when its measurement system was not yet stood up — it cannot be graded, which is a different statement from missing.",
+        "Wrote recommendations that name a first action rather than a theme."
+      ],
+      "follow_up_detail": [
+        "On pipeline quality: volume and deal size were both up sharply year over year, and conversion was fast and healthy — but the largest incremental source converts at the lowest rate while the highest-converting motion was the least fed. He called it a coverage-versus-conversion rebalance, not a demand problem.",
+        "On retention: tracing the full prior-year cohort showed the reported number actually understates performance, because customers who upgrade leave the segment entirely and were never counted as retained.",
+        "Most of the churn was a tiny-account tail around a sticky, expanding core — which he named as the healthy shape for a low-cost entry product rather than a problem.",
+        "The un-instrumented result had no dashboard at all, so he recomputed it from scratch, cross-checked it independently in the CRM, and stated its floor honestly rather than presenting a single figure."
+      ]
+    },
+    {
+      "id": "winrate_cliff",
+      "title": "Found the cliff hiding inside a target the company hit",
+      "maps_to": [
+        "segmentation",
+        "sales funnel metrics",
+        "executive reporting",
+        "win rate analysis",
+        "go-to-market strategy"
+      ],
+      "situation": "A win-rate key result came in above target and was being treated as settled. The headline was a single blended rate across a wide employee band.",
+      "task": "Report on it — which he chose to mean testing whether the hit was durable rather than confirming it.",
+      "action": "He cut the win rate by employee band and found it collapsing as deals got larger: strong at the small end, roughly halving in the middle band, and effectively winless on real dollars at the top — the single win in one band was a token deal. Rather than stop at the pattern, he read the individual deals behind it and found the losses shared a profile. Losses were nearly three times the size of wins by median deal value, took roughly four times as long to close, were against established incumbents where the wins had been greenfield with no vendor to displace, and attached about half as many product modules. The conclusion was that the result was real but was a small-deal result, and the motion itself has to change above a certain size rather than being stretched.",
+      "key_decisions": [
+        "Cut by employee band rather than reporting the blended rate, which is what exposed the cliff.",
+        "Read the individual deals rather than stopping at the aggregate, which is where the shared profile came from — the losses were not random.",
+        "Flagged that the one win in the weakest band was a token amount, so the band is effectively winless on dollars even though it shows a non-zero rate.",
+        "Stated the sample-size caveat explicitly in the document — directional signal, not a statistical finding — rather than presenting it with false confidence.",
+        "Recommended building a distinct motion for larger deals rather than coaching the existing one, because the fast transactional close that wins small greenfield deals is structurally wrong for a multi-stakeholder incumbent displacement."
+      ],
+      "follow_up_detail": [
+        "He also tested the result against the broader definition in the goal text — combining both deal types still cleared the target, so the hit was robust either way and he said so.",
+        "The forward book was healthy but concentrated early in the funnel, meaning the rate rides on a small closed base and should be watched as those mature.",
+        "The three separating factors were sales-cycle length, incumbent displacement, and product depth — deeper commitments stick, which links the finding back to attach strategy rather than just deal size.",
+        "This is the story that answers 'how does selling to a mid-sized multi-entity business differ from a small one' with his own data rather than an opinion."
+      ]
+    },
+    {
+      "id": "investor_retention_lens",
+      "title": "Gave the investor retention story two honest answers instead of one",
+      "maps_to": [
+        "executive reporting",
+        "Finance partnership",
+        "metric definition",
+        "trusted reporting",
+        "segmentation"
+      ],
+      "situation": "Finance and the chief executive wanted retention reported at a brand level for investors — rolling every franchisee up so each brand counts as one enterprise customer — with cuts at several location thresholds. Then a follow-up: what if we only count customers under a master agreement?",
+      "task": "Pull it, and define it.",
+      "action": "He validated before reporting: the per-operator baseline reproduced the published convention to the decimal, the largest brand reconciled exactly, and re-running on a raw brand field moved every threshold by a negligible amount, establishing the mapping was robust. Then he answered a question they had not asked but needed — not just retention at each threshold, but what the blended company number becomes if you adopt each definition. The finding was that the overwhelming majority of the lift comes from the largest brands alone, so the whole book does not need rolling up to report a strong number. On the master-agreement cut he refused to pick one figure: two defensible readings diverge by roughly seventeen points, and the gap is itself the story, because filtering to flagged customers excludes newly-signed franchisees by construction — a location signed within the measurement window has no base period, so it can never register as expansion.",
+      "key_decisions": [
+        "Validated the model against the existing published convention before trusting any new cut — reproducing the known number to the decimal is what earns the right to report a new one.",
+        "Answered the more useful question alongside the one asked: what happens to the company number if you adopt a definition, not just what the definition yields.",
+        "Presented two readings rather than choosing, and recommended which to lead with and which to footnote — with the footnoted one verified to reproduce the shipped dashboard exactly, so the contrast is honest.",
+        "Tested whether two proposed filters were independent and found they were near-substitutes, so stacking them added nothing.",
+        "Volunteered the caveats that weaken his own headline, including that some brands in the cut are single-operator businesses whose 'locations' are client sites rather than franchised units."
+      ],
+      "follow_up_detail": [
+        "He corrected an executive's intuition with mechanism rather than a number: a guess about customer count was off by a wide margin because the qualifying brands are operator-dense — one brand alone collapses well over a thousand operators into a single entity.",
+        "He found his own brand-assignment counts were not reproducible run to run, because a de-duplication step kept whichever row the warehouse happened to return first and hundreds of customers hold locations under multiple brands. He forced a deterministic tiebreak and issued the guidance: quote the rates, call the counts approximate.",
+        "A label mismatch that looked like a disagreement turned out to be a materiality floor — a smaller brand count that carries the overwhelming majority of the relevant revenue. Both numbers describe the same set.",
+        "Shipped as a live dashboard with a validation cell that ties back to the figures in the written analysis, so the two cannot drift apart."
+      ]
+    },
+    {
+      "id": "grr_not_nrr",
+      "title": "Reframed his own comp proposal around the metric that was actually broken",
+      "maps_to": [
+        "compensation design",
+        "quota and capacity planning",
+        "retention",
+        "metric definition"
+      ],
+      "situation": "He had opened designing a customer-success compensation plan around net revenue retention, on the shared belief that the team had a churn problem. That was his own starting proposal.",
+      "task": "Design the plan.",
+      "action": "Before building it he pulled trailing per-person retention and found the team was already comfortably hitting the net retention target — while gross retention sat well below it. Expansion was masking real quarterly churn. One person was the canonical case: strong net retention on weak gross retention, meaning under his own original design she would have earned full variable pay while losing a significant share of her book every quarter. He wrote the finding up as changing the frame of his own proposal, cross-checked it against the outside critique that net retention is a poor individual-level metric because strong product masks mediocre service, and rebuilt around a dual anchor where variable pay is driven by the *lower* of the two attainments.",
+      "key_decisions": [
+        "Chose the minimum of the two attainments specifically because it structurally prevents the masking he had just found — an average or a weighted blend would have preserved the problem.",
+        "Derived the anchors rather than picking them, adjusting upward to compensate for the large share of revenue that sits outside anyone's book and retains far worse.",
+        "Dropped his own proposed kicker after sizing it — the new-logo portion was too small company-wide to change behavior, so he recommended a spiff outside the core plan instead.",
+        "Offered three variants and stated a preference for the smallest change to his own design, because the industry-standard alternative required building attribution in the CRM first.",
+        "Declined to back-solve anchors through the book mix, because doing so demanded a number leadership had already rejected as demotivating — and said so plainly rather than presenting it anyway."
+      ],
+      "follow_up_detail": [
+        "The structural blocker he named: no compensation plan for this team reaches the company target while a large share of revenue is unowned, because the unowned book retains materially worse and drags the blended number regardless of what the team does.",
+        "That finding came out of separate work where he scanned every active automation in the CRM and established that the renewal-creation automation everyone believed in did not exist.",
+        "On weighting he was explicit that the data implied roughly even and he chose otherwise for strategic reasons — and noted the choice barely matters, since nearly every person moves less than half a point either way.",
+        "He rounded one anchor down rather than up, because rounding up would have put it above the team median so most of the team would miss — a small cost in mean payout for a large gain in plan credibility."
+      ]
+    },
+    {
+      "id": "okr_unreachable",
+      "title": "Told leadership the retention goal was already mathematically out of reach",
+      "maps_to": [
+        "target setting",
+        "compensation design",
+        "executive reporting",
+        "metric definition",
+        "Finance partnership"
+      ],
+      "situation": "Customer-success leadership asked him to rebuild the compensation plan re-anchored to the second-half company objective, plus a buffer for churn nobody could control.",
+      "task": "Set anchors that would actually motivate the team.",
+      "action": "He recomputed the objective's metric from first principles and tied it out to the existing reported columns with zero divergence across more than a year of months, establishing it as the metric rather than an approximation. That let him derive three consequences that changed the modeling: a year-end reading has an already-locked denominator so the required performance is an exact back-solve rather than a compounding problem; newly-signed customers contribute nothing because the cohort is frozen; and the metric is a decline budget that only ratchets down. He killed his own first approach — compounding a quarterly rate — as structurally wrong. Then he ran the arithmetic and delivered the answer: the first half had already consumed nearly the entire annual decline budget, leaving a monthly allowance roughly a twelfth of the actual burn rate, sustained for six months. Anchoring variable pay to that target would guarantee the whole team missed.",
+      "key_decisions": [
+        "Checked whether the goal was reachable before designing pay against it, which is the step that was skipped upstream.",
+        "Anchored the plan to a reachable number and flagged the residual as a company-level gap rather than a team-level one — the team cannot close a gap created by unowned revenue.",
+        "Measured the uncontrollable-churn buffer instead of negotiating it, and found it a fraction of what everyone had assumed.",
+        "Insisted the buffer be net rather than gross: a stakeholder's observation about per-employee drift validated almost exactly on the downside, but the upside movement was larger, so the effect self-cancels and buffering the gross would have been a giveaway.",
+        "Checked precedent rather than assuming the second half would be better — the prior year's equivalent cohort had lost ground over the same stretch."
+      ],
+      "follow_up_detail": [
+        "He found the classifier for uncontrollable churn already existed in the data as a naming convention on the churn-reason field, so the measurement needed no new instrumentation.",
+        "He also caught two statistical artifacts in his own analysis and flagged them rather than reporting them: a strong negative correlation that mostly disappears once you net within customer-period, and a variance decomposition that is unusable here because the covariance term swamps it.",
+        "He stated a fairness trade explicitly rather than hiding it — uncontrollable churn is not evenly spread, so a flat buffer over-compensates the unaffected, which he accepted rather than running an exception queue.",
+        "He withdrew two of his own earlier recommendations in writing: a pay-mix change, because the team was already at a benchmarked ratio, and scaling by book size, because percentage-based attainment is already book-size neutral."
+      ]
+    },
+    {
+      "id": "no_one_nets_down",
+      "title": "Redesigned an accelerator so nobody lost pay in the switch",
+      "maps_to": [
+        "compensation design",
+        "quota and capacity planning",
+        "plan transition",
+        "sales motivation"
+      ],
+      "situation": "The existing quarterly accelerator was gated on a product-specific booking threshold. A rep could beat quota outright and still be gated to zero accelerator, because the gate keyed on something other than their overall performance.",
+      "task": "Remove the gate without cutting anyone's pay in the switchover.",
+      "action": "He replaced the gate with marginal bands that work like tax brackets — a higher rate on the first band above quota, higher still beyond it. But banding pays less than a flat multiplier on that first band, which meant a rep who had been clearing the old gate would lose money in the transition. Rather than accept that or abandon the banding, he built a transitional plan that materializes both structures and pays each rep whichever is larger, for one quarter only. Nobody nets down in the switch, and the reduction only begins the following quarter. He kept the legacy logic intact for historical re-runs, and made all three variants share one output shape so the downstream selection and ledger logic stayed plan-agnostic.",
+      "key_decisions": [
+        "Chose banded marginal rates over a flat multiplier because the flat version overpays on the first dollar above quota, then solved the resulting transition problem rather than reverting.",
+        "Kept the one-quarter bridge in code and deliberately out of the rep-facing terms and comp letters — a temporary mechanic does not belong in permanent contractual language.",
+        "Made all plan variants emit an identical schema so the higher-of comparison and the ledger never need to know which plan is active.",
+        "Preserved the legacy calculation rather than deleting it, so prior periods can still be reproduced exactly.",
+        "Caught a stale announcement draft describing an earlier, more generous design and corrected it by hand while presenting, then marked the draft as superseded so nobody reused its language."
+      ],
+      "follow_up_detail": [
+        "The transition quarter's mix confirmed the bridge fired correctly — a minority of reps landed on the new structure and the rest were protected by the old one, which is exactly the expected distribution.",
+        "The rep who had been gated to zero under the old plan came out materially positive; the rep who lost ground was protected that quarter by the higher-of rule.",
+        "The rollout renamed the plan term in the source-of-truth sheet through an idempotent apply script, with the methodology document synced in the same change so the two could not drift.",
+        "Covered by tests spanning the gated, banded, and higher-of paths plus the exact band boundary and the quarter-routing logic, because the routing is date-dependent and silently wrong routing would be invisible."
+      ]
+    },
+    {
+      "id": "comp_to_pricing",
+      "title": "Turned a compensation ask into a pricing decision",
+      "maps_to": [
+        "compensation design",
+        "pricing strategy",
+        "unit economics",
+        "margin analysis"
+      ],
+      "situation": "A partnerships compensation plan was being redesigned away from a subjective scoring path toward a formula on locations opened and margin discipline. He was asked to extend it to protect margin on the per-employee product line as well.",
+      "task": "Build the model and pressure-test it.",
+      "action": "He rebuilt the entire sheet independently from the cost book first — every cell reproduced — then derived both of the model's constants rather than tuning them. Credit per location falls out of cost divided by the complement of the margin target; the margin-sensitivity slope was calibrated so that at the standard price floor the score equals the real gross-profit ratio, on the stated design principle that a point of margin should cost the rep the same fraction of pay it costs the company in gross profit. Then he answered the per-employee ask with a refusal and a reason: scoring per revenue line rather than per package is mechanically trivial, but doing it surfaces that the per-employee list price clears the *old* margin target by a hair and misses the current one. Protecting it at the current target would penalize reps roughly a quarter for selling at list price. The list price had been set against the prior target and never re-based when the target moved.",
+      "key_decisions": [
+        "Rebuilt the model from source before critiquing it, so the critique could not be dismissed as a misreading.",
+        "Derived both constants from the cost book rather than tuning them to a desired payout, which is what makes the plan defensible when a rep asks why the number is what it is.",
+        "Declined the extension as asked and redirected it — the honest answer was that this is a pricing problem wearing a compensation costume.",
+        "Exposed a cross-subsidy the existing structure structurally cannot see: within the bundled package a high-margin line subsidizes the thin one, and the blend reports a healthy number that hides it. Scoring by line makes it visible; scoring by package never can.",
+        "Rejected the sheet's own flattering headline — it benchmarked against a path that had paid nothing the prior quarter because zero qualifying agreements were signed — and rewrote the opener honestly around what the old plan actually did versus what the strategic goal needed."
+      ],
+      "follow_up_detail": [
+        "He corrected his own earlier figure when challenged: a maximum payout stack he had quoted was wrong because the quarterly accelerator is a separate additive line rather than folded into the multi-year rate. He republished the corrected table.",
+        "He then reframed where the breach actually lives — most of it sits in a plan that already exists, and the new proposal adds a small fraction. 'The straw, not the load.' A hard cap has to be cross-plan, which is a policy call bigger than this sheet.",
+        "He named the real cost risk as something else entirely: credit paid at signature rather than activation, against an observed rate at which signed locations never activate — so a meaningful share of the payout buys nothing. Fix: pay at activation.",
+        "He flagged a unit trap in bold, because two rates in the stack are denominated differently — one is of a month, the other of a year — and adding them directly is wrong.",
+        "He listed five structural defects including a score with no zero floor that goes negative below a threshold and generates negative quota credit, and two rep-entered fields that move the rep's own pay."
+      ]
+    },
+    {
+      "id": "quota_resize",
+      "title": "Separated new territory from correcting an old number",
+      "maps_to": [
+        "quota and capacity planning",
+        "seller-level goals",
+        "territory design",
+        "target setting"
+      ],
+      "situation": "He was asked to move two brands from a departed rep's book onto another rep's book, and to recommend a new quarterly quota targeting full attainment — because that rep had been heavily overachieving.",
+      "task": "Pick the number.",
+      "action": "He measured attainment exactly as the production calculation does — same field, same brand-matching rule, same source — rather than approximating it, then pulled six quarters. The rep was averaging well above quota with the three most recent quarters all comfortably over. The existing quota was already soft, independent of the new brands. He also noticed one brand in the existing book had produced nothing across all six quarters. He then sized the incremental separately from the correction, and triangulated expected production five different ways — a six-quarter mean, trailing twelve months, the seasonally-matched prior-year quarter, the current-half run rate, and a growth-adjusted version — noting that the seasonal anchor and the run rate converge tightly, which is why he flagged the flat annual mean as a knowingly-low estimate.",
+      "key_decisions": [
+        "Measured attainment through the production calculation rather than a reasonable proxy, so the number could not be disputed on methodology.",
+        "Set quota at expected production rather than building in a discount, then published the sensitivity table showing where that lands across the plausible range.",
+        "Decomposed the increase into its two halves — what the new brands add versus what corrects the pre-existing soft quota — which is what makes a large increase defensible to the person receiving it.",
+        "Quantified the cost of doing nothing rather than only the case for acting: leaving quota flat while the book grows produces a large overpayment against target on an uncapped linear plan.",
+        "Named the two-part implementation explicitly, because the brand-assignment constant and the quota cell must both change or the calculation under-credits."
+      ],
+      "follow_up_detail": [
+        "The recommendation lands in a band centered just under full attainment across the plausible range, tipping over if recent form holds — which he described as exactly where you want a rep to sit.",
+        "The dead brand in the book was worth surfacing separately, since it inflates apparent territory without contributing.",
+        "He flagged the operational sequencing caveat: the departed rep's opportunities must be excluded before the next quarterly run, or the calculation will credit them twice.",
+        "He also flagged, in adjacent work, that reassignment should not happen until the departing rep's final commission cycle is locked — movement on those opportunities would otherwise distort the final number."
+      ]
+    },
+    {
+      "id": "true_acv",
+      "title": "Replaced four parallel comp pipelines with one definition",
+      "maps_to": [
+        "metric definition",
+        "compensation design",
+        "data integrity",
+        "systems design"
+      ],
+      "situation": "The field that drives commission branched by deal type *before* reaching any rollup, so four different per-line pipelines fed it. Two of them annualized revenue in ways that disagreed with each other. Implementation fees were excluded entirely, multi-year promotional deals were over-counted, and there was no reproducible basis anyone could point at.",
+      "task": "Stop patching per-line and define what commissionable amount should actually be.",
+      "action": "He set the principle first — commission on true annualized contract value, meaning recurring value divided by term and annualized, plus one-time fees at full net value — then made it implementable with zero new fields, derived entirely from three standard quote fields that were already populated. The one-time component falls out by construction as the difference between net amount and subscription value, which means credits come through negative automatically rather than needing a rule. He verified that to the cent on real deals. Then he killed three competing designs with data rather than argument, and defended the one genuinely contestable choice — not amortizing one-time fees — with the multi-year arithmetic showing that amortizing would make a longer deal pay the rep *less* than the same deal at one year.",
+      "key_decisions": [
+        "Derived the formula from fields already populated rather than requesting new ones — he had a standing rule to be consulted before any new CRM field is created, and applied it to himself.",
+        "Chose to compute live from the raw term field rather than read an already-stamped value that holds the same math, because that stamped field carries a small stale tail.",
+        "Rejected a subtraction-based design after testing it: it broke on amendment and renewal quotes and produced hundreds of negative commissionable amounts, one deeply negative.",
+        "Ran a head-to-head against a competing line-type design rather than asserting his was better — it produced far more negatives, zeroed an entire partner channel, and under-counted by a wide multiple.",
+        "Scoped the deployed change to a single branch so every other path is byte-identical to the original, with rollback metadata captured before applying."
+      ],
+      "follow_up_detail": [
+        "The validation was a sandbox run over more than twenty thousand closed-won opportunities: formula consistency held completely, only a small fraction of opportunities changed, and all of them were in the intended branch.",
+        "Negatives dropped from hundreds under the rejected design to a handful under his, and he verified each survivor was legitimate rather than suppressing them.",
+        "The bigger finding was hiding under the headline: the plan text says a short contract's value is the months actually contracted, but the old formula annualized short deals *upward*, overpaying against the signed plan. That accounted for the majority of the total swing — far larger than the promotional and fee issues everyone knew it by. He framed it as a correction, not a policy change, and warned it would surprise anyone who only knew the headline.",
+        "He flagged one deliberate divergence from the plan text — implementation fees now earning quota credit — as intended, and named the deadline by which the governing rep-facing language had to be updated before the change went live."
+      ]
+    },
+    {
+      "id": "declined_the_discount",
+      "title": "Recommended declining a large partner ask, and built the counter",
+      "maps_to": [
+        "pricing strategy",
+        "deal desk",
+        "unit economics",
+        "margin analysis",
+        "negotiation"
+      ],
+      "situation": "A multi-brand restaurant holding company with thousands of locations asked for an additional across-the-board discount if they reached a volume threshold — stacked on top of an already-proposed volume tier sheet. Sales wanted a number to take back.",
+      "task": "Determine the maximum additional bulk discount, treating the partner as a self-contained business at scale.",
+      "action": "He checked the proposal against canonical floors before modeling anything, and found the proposed volume tier already breached the floor on both segments before any additional discount — the tier *was* the volume discount. Then he built self-contained unit economics at the threshold from actual portfolio cost rates, and corrected the framing his stakeholder had assumed: dedicating a customer-success person across that many locations is more expensive per location than portfolio allocation, not less. The real scale win is the complexity weight dropping through consolidated stakeholders and batch onboarding. The showstopper turned out to be unrelated to the ask — the per-employee rate in the proposal was already far below its margin target before any discount, because the backend pass-through cost dominates. Any discount there compounds an existing shortfall.",
+      "key_decisions": [
+        "Checked the proposal against floors first, which reframed the entire question — you cannot discount from a position that is already below the floor.",
+        "Corrected the stakeholder's cost intuition with arithmetic rather than accepting the premise of the question.",
+        "Separated mathematically allowable from defensible: some lines had real headroom, but he capped the recommendation well below it, prospective-only, on per-location fees only, and zero on the per-employee rate — costing a fraction of the original ask while setting no precedent on the line that matters.",
+        "Argued precedent alongside math — no prior case exists for stacking volume tiers with a cumulative discount, and a perpetual concession at full scale becomes a very large annual margin sacrifice.",
+        "Built a five-option counter ladder converting a perpetual rate concession into bounded ones: hold the line, a floor-respecting term lock, a one-time milestone service credit, dedicated staffing that carries real value at no margin cost, and an add-on amnesty that doubles as productizing a known free-entitlement leak."
+      ],
+      "follow_up_detail": [
+        "The per-employee line needs a price *increase* to reach its target, not a discount — even at zero allocated headcount the target is unreachable below a materially higher rate.",
+        "He flagged the sensitivity honestly: if the partner turns out to need heavier implementation staffing than modeled, the cost per location rises and the headroom on the other lines collapses too — confirm implementation scoping before locking any offer.",
+        "He shipped a single collapsed offer with the formal analysis behind it, so sales had one thing to say rather than a menu.",
+        "The recommendation of record was to decline, which he stated plainly rather than burying in options."
+      ]
+    },
+    {
+      "id": "contract_over_crm",
+      "title": "Overturned the definition of who was contractually bound",
+      "maps_to": [
+        "data integrity",
+        "pricing strategy",
+        "segmentation",
+        "legal and contract analysis"
+      ],
+      "situation": "An entire price-increase program hinged on splitting the book into customers who could be repriced immediately with notice, and customers protected until their renewal anniversary. The system said a large majority of the non-master-agreement book fell in the first group. Treating a legally bound customer as unbound means sending an increase to someone with contractual protection.",
+      "task": "Define, defensibly, who is actually contracted.",
+      "action": "He went to the contract rather than the CRM field. Every customer who ever signed links to the public terms page, which carries the auto-renewal clause — so any historical contract plus still paying means bound under master terms, and the CRM's auto-renewal checkbox is an automation flag rather than the legal mechanism. He verified that the automation was fiction before relying on the reasoning: not one of the accounts the system marked as auto-renewed had a successor contract record. Then he attacked his own classifier from four directions, because 'never contracted' does not mean 'guaranteed unbound' — a customer can sign an order form by e-signature that was never converted into a contract record.",
+      "key_decisions": [
+        "Read the governing contract language rather than trusting a CRM checkbox, which inverted the classification for a large share of the book.",
+        "Verified the automation everyone assumed existed by checking for successor records, and found none — so the described renewal flow was largely aspirational manual catch-up.",
+        "Stress-tested his own classifier four ways rather than shipping it: file-scanned every never-contracted account for signed documents, crawled parent-and-child account trees for contracts papered on a related entity, added a keyword guard for master-agreement brands whose structured fields were wrong, and added a recency guard for freshly-signed customers with no contract record yet.",
+        "Ported the classifier to a single warehouse query so the send list, the wizard, and the dashboard all anchor on one definition rather than diverging.",
+        "Found that a whole planned segment did not exist — the evergreen contract field is unpopulated across the entire book, so every active contract is fixed-term and that branch of planning could be deleted."
+      ],
+      "follow_up_detail": [
+        "The four-way stress test reclassified roughly a tenth of the cohort back out, the largest single account a substantial one — all of which would otherwise have received an increase they were protected from.",
+        "The parent-child crawl was the non-obvious one: a master agreement covering child locations means the contract is real but sits on a different record than the one being classified.",
+        "He caught two bugs during the warehouse port — a recency filter that had to check the earliest start across all non-cancelled rows rather than any row, and two fields that had to come from the same row via a window function rather than independent aggregates.",
+        "The misclassified accounts became the one soft gate on the next cohort in the handoff: backfill those specific records, everything else runs in parallel."
+      ]
+    },
+    {
+      "id": "decision_metric",
+      "title": "Chose the decision metric that can actually show a bad answer",
+      "maps_to": [
+        "scenario modeling",
+        "pricing strategy",
+        "executive reporting",
+        "risk analysis"
+      ],
+      "situation": "Building the decision case for a price increase across several hundred accounts, he needed to show leadership what happens if customers churn in response. The first version of the scenario table showed the program coming out positive even at the most pessimistic elasticity assumption.",
+      "task": "Model the increase against churn-response scenarios so leadership could decide whether to act.",
+      "action": "He read his own output and caught why the reassuring result was structurally guaranteed rather than genuinely good news. The metric — retained lift — only ever asks what fraction of the increase gets paid. It can never go negative, because it never subtracts the baseline revenue you lose when an elasticity-driven customer leaves entirely. He replaced the headline with the net effect of acting versus not acting, which adds back the lost base. The two framings are identical at neutral elasticity and diverge sharply above it. Under proper accounting the most pessimistic case flipped from comfortably positive to net negative.",
+      "key_decisions": [
+        "Replaced the metric rather than adjusting the assumptions, because the problem was that the measure could not express the outcome anyone was worried about.",
+        "Used the corrected metric to make a lane-level call rather than a single go/no-go: one lane is robust to a large relative churn increase, the other flips negative at a much lower threshold, so the two got different risk treatment rather than one policy.",
+        "Sized the risk down before committing, recommending a small pilot to measure actual response ahead of the larger wave rather than modeling harder.",
+        "Banked the rule as a durable convention covering compensation changes, discounting, and pricing experiments — anywhere an intervention might change the behavior you are measuring."
+      ],
+      "follow_up_detail": [
+        "The two formulations coincide exactly at neutral elasticity, which is why the flaw was invisible in the base case and only appeared under stress — the most dangerous kind of modeling error.",
+        "The pilot recommendation was specific: a few dozen accounts, timed months ahead of the larger renewal-lane sends, so there would be real response data before the bigger exposure.",
+        "Separately he defended the concession framework with a thousand-run simulation across four tiers, and then wrote the argument against his own result in the handoff — the clean outcome comes from large headroom rather than precision, and he explicitly warned against claiming company-specific data behind the priors, because there was none.",
+        "When Finance later changed a rule — customers already locked into a multi-year term should receive the concession automatically rather than on request — he moved it from a reply-time lever to build time and implemented it in both build paths, so downstream layers consumed it with no further edits."
+      ]
+    },
+    {
+      "id": "churn_premium",
+      "title": "Tested the assumption underneath a pricing policy",
+      "maps_to": [
+        "pricing strategy",
+        "segmentation",
+        "retention",
         "data integrity"
       ],
-      "situation": "Bookings were being reported as though they became revenue. Nobody had reconciled signed ARR against what customers were actually billed.",
-      "task": "Quantify where signed revenue does and does not reach the invoice, and make the gap actionable rather than alarming.",
-      "action": "Compared booked monthly revenue against trailing billed revenue for every customer signed in the prior half-year, then classified each gap account three ways using contraction records, churn flags, and implementation status: documented attrition already managed, accounts legitimately mid-implementation and not yet billing, and silent leakage with no record anywhere. Drove churn dating off the revenue signal rather than the CRM's churn-date field after finding the two disagreed on a meaningful share of cases.",
-      "result": "The silent bucket turned out to be a process gap — rates reduced outside the CRM. Established the realization curve showing payroll revenue ramps over months after signature rather than landing at contract start, and codified the canonical billed-revenue definition so bookings and billings stopped being conflated in executive reporting."
-    },
-    {
-      "id": "landing_forecast_audit",
-      "title": "Built the forward forecast, then audited it hard enough to delete his own number",
-      "maps_to": [
-        "owning forecasting",
-        "bottoms-up revenue models",
-        "revenue point of view",
-        "scenario modeling"
+      "situation": "The pricing policy applied a steeper increase to smaller accounts and a gentler one to larger ones. The implicit justification was that month-to-month customers churn roughly twice as much as contracted ones, so the steeper rate was recoverable.",
+      "task": "Test the assumption before the sends went out.",
+      "action": "He measured a full year of churn by contract state and by revenue band across the relevant book, on both logo and dollar churn rather than picking whichever was more convenient. The headline refuted the premise: the premium was a couple of points, not a multiple. But the banding is what made it actionable rather than merely deflating — the premium concentrates almost entirely in one middle revenue band, where it is large enough to comfortably defend the steeper rate, and it is essentially absent in the smallest band, where that rate applied most broadly.",
+      "key_decisions": [
+        "Measured both logo and dollar churn rather than selecting one, so the conclusion could not be attributed to the choice of metric.",
+        "Cut by revenue band rather than reporting the aggregate premium, which is what turned a refutation into a targeting recommendation.",
+        "Reported that the policy was right where it mattered and unjustified where it applied most broadly — a split verdict rather than a simple yes or no.",
+        "Kept the finding in the program handoff rather than only in the analysis, so the next cohort owner inherits the reasoning rather than the rate.",
+        "Measured a full year rather than a recent window, because a shorter period on a book this size would not have separated the bands with enough confidence to act on."
       ],
-      "situation": "The executive team needed a forward landing forecast they could defend, not a straight-line trend.",
-      "task": "Build a forecast whose assumptions survive being challenged.",
-      "action": "Built a monthly ending-revenue bridge across churn, downsell, upsell, reactivation and new business, weighting open pipeline by a custom point-in-time win-probability model instead of the CRM's stage probability — backtested against the incumbent, which it beat clearly, and which turned out to overstate open-pipeline value substantially. Presented it as a three-scenario cone anchored to observed regimes rather than arbitrary shocks. Then ran an adversarial audit of his own model using independent agents instructed to attack it.",
-      "result": "The audit found the writeup no longer matched the shipped code, and that new business — the entire growth engine — was modeled high and gross while actually declining. He removed an unsourced revenue credit from his own forecast rather than defend it, and restated the central estimate lower."
+      "follow_up_detail": [
+        "The premium in the middle band was large enough to defend the steeper rate on its own terms; in the smallest band the two contract states were statistically indistinguishable.",
+        "This sat alongside two other tests of the same program's premises — the contract-state classifier and the decision-metric correction — which together mean the program's core assumptions were each independently checked before execution rather than after.",
+        "The practical consequence was targeting: apply the steeper rate where the evidence supports it and reconsider it where it does not, rather than defending a uniform policy.",
+        "The framing he took to leadership was not 'the policy is wrong' but 'the policy is defensible in one band and unsupported in another' — which is actionable, where a blanket refutation would have been merely deflating.",
+        "It also sharpened the pilot recommendation from adjacent work: measure actual response in the band where the justification is weakest, rather than sampling the cohort uniformly."
+      ]
     },
     {
-      "id": "complexity_scoring_model",
+      "id": "changed_the_lens",
+      "title": "Refuted a company-wide margin hypothesis by changing the lens",
+      "maps_to": [
+        "margin analysis",
+        "unit economics",
+        "pricing strategy",
+        "segmentation"
+      ],
+      "situation": "Leadership believed a cohort of custom-priced accounts was dragging gross margin, and a migration plan was being built on that premise.",
+      "task": "Answer whether that cohort is actually a drag.",
+      "action": "He first rebuilt the two largest usage-correlated vendor costs from actual event data rather than accepting the allocation, and found the total drag across the entire cohort was trivial — and, counterintuitively, not in the heavy-usage accounts at all. Then he changed the lens and said why: a per-location allocation conflates the pricing model with the cost model, so a customer with many locations and few employees looks expensive only because of how cost was spread. That cohort is priced per employee, so a per-employee comparison is the fair one. He rebuilt with a single uniform per-employee rate across every paying customer, and the answer inverted — the supposedly problematic cohort has materially *better* margin than the rest of the book, and the real drag sits in the book nobody had asked about.",
+      "key_decisions": [
+        "Rebuilt costs from usage events rather than accepting an allocation, because an allocation cannot answer a question about which customers are expensive.",
+        "Changed the analytical lens and stated the reasoning explicitly rather than presenting two numbers — the per-location view was measuring the allocation method, not the customers.",
+        "Followed the finding to the book he had not been asked about, where the actual drag turned out to be concentrated.",
+        "Kept the original action while changing its justification: the carve-out is still correct, but the reason shifts from fixing a margin disaster to cleaning up an outlier shape and not adding more of them.",
+        "Caveated the single underwater account in the cohort — audit its employee count before acting, it may be listed rather than active."
+      ],
+      "follow_up_detail": [
+        "The custom-priced cohort's median margin came in well above the rest of the book, and those customers pay nearly twice as much per employee.",
+        "The advantage is largest in the smallest revenue buckets, which is the opposite of the intuition that custom pricing means discounting.",
+        "The real problem shape: large enterprises with very high employee counts paying per-location prices across a handful of locations — a much larger drag concentrated in far fewer accounts.",
+        "He found and documented two upstream bugs in the shared cost pipeline while doing this — a vendor cost hiding in a catch-all category because its journal entries carry date-range descriptions with no vendor text, and an aggregation using first-value where sum belonged, under-reporting a vendor by more than double. He noted both affect attribution rather than totals, so the Finance reconciliation still held.",
+        "The recommendation flipped into a target list: those non-cohort accounts are the candidates for a per-employee pricing conversation."
+      ]
+    },
+    {
+      "id": "price_program_end_to_end",
+      "title": "Owned a price-increase program end to end",
+      "maps_to": [
+        "pricing strategy",
+        "program ownership",
+        "cross-functional",
+        "execution",
+        "change management"
+      ],
+      "situation": "Leadership wanted a price increase across the existing base. There was no connector between the quoting system and the billing system, contract-state data was unreliable, and the book ran to thousands of accounts.",
+      "task": "Own strategy, cohort definition, economics, comms, execution, and the cross-functional rollout.",
+      "action": "He built the cohort from a contract-state classifier grounded in the actual contract language, then repeatedly attacked his own cohort definition before trusting it. He modeled the economics on a decision metric that can express a bad outcome, defended the concession framework with simulation, and tested the policy's own churn premise against measured data. Execution ran directly against the billing system since no connector existed, using a flip primitive he had validated in sandbox against real subscription shapes. Comms went out with per-owner briefing documents, an objection playbook structured as two separate blocks — standard concessions and last-resort churn-save plays — specifically so nobody would offer save terms to a customer who was not threatening to leave. Then he handed the entire program off before leave.",
+      "key_decisions": [
+        "Insisted on a full dress rehearsal against real subscription shapes rather than a dry run, which surfaced a defect that would have silently skipped every account with more than one billing customer.",
+        "Reversed a hard exclusion into a soft flag after measuring it: excluding accounts with recent owner activity was dropping a large share of the total value, disproportionately the large accounts, so he kept them in, surfaced the flag, and looped each owner in with their own slice before sends fired.",
+        "Caught a default that would have generated a support ticket per email across the campaign, and replaced it with an out-of-band per-batch digest.",
+        "Widened the escalation threshold deliberately so more cases routed through the channel where he and Finance would see them, accepting more noise for more oversight.",
+        "Cut a planned playbook from scope entirely, on the reasoning that anything deeper than the briefing documents belongs to the managers who own those conversations."
+      ],
+      "follow_up_detail": [
+        "The dress rehearsal method: mirror the real target accounts' current subscriptions into the billing sandbox using the same production identifiers so the classification files matched unchanged, activate invoice-only so no payment method was needed, then run dry-run, apply, and an independent verifier written as a separate script rather than trusting the applier's own output.",
+        "He audited whether the built quotes matched what customers had actually been emailed — his own question — by reconstructing the communicated price from first principles and validating that reconstruction against real sent messages before trusting it. The first pass matched a large majority; he inverted the pricing logic to target the emailed number directly and it went to near-total agreement.",
+        "Standing rule he adopted for un-priceable accounts: price it right or skip the quote entirely, keeping the opportunity with an annotation rather than shipping a distorted number.",
+        "The handoff went to a named owner plus a technical builder, with a master hub note and a next-cohort playbook, and a deliberately blunt open-items section."
+      ]
+    },
+    {
+      "id": "deterministic_core",
+      "title": "Built a pricing bot where the model cannot touch the math",
+      "maps_to": [
+        "agentic AI",
+        "automation",
+        "systems design",
+        "deal desk",
+        "AI safety design"
+      ],
+      "situation": "Sales reps were flooding the order-management channel asking humans to eyeball quotes before sending, and volume had grown roughly fivefold in six months while that team was short-staffed. Reps also had a standalone pricing calculator with frozen hardcoded cost constants.",
+      "task": "Replace both with something reps use in the tool they already live in, giving an instant pass-or-fail on a quote.",
+      "action": "Before designing anything he built the evidence base: captured months of quote-check threads, catalogued the distinct validation rules the order team actually enforces in their replies — each with the object and field, a detection sketch, and a link to the evidence — and quantified who asks. The counterintuitive finding was that most review time goes on rep omissions in non-pricing form fields rather than actual pricing mistakes, and those are deterministic. Then he cross-checked against the documentation and reframed the whole project: only a handful of the rules were documented anywhere reps look, several were buried across many pages, and the rest were undocumented tribal knowledge. It was an enforcement problem, not a documentation-authoring problem. The build rests on three constraints, each rejecting an easier option.",
+      "key_decisions": [
+        "The verdict is computed in code and relayed verbatim — the model orchestrates, explains and routes, but never recomputes the margin. Later he *relaxed* his own absolute rule rather than defending it: the real failure was not the model computing, it was computing silently and presenting a guess as authoritative. New rule — prefer tools, caveat transparently when computing off-tool, but headline pass-fail stays tool-computed.",
+        "No hardcoded cost, ever. Rates derive from a trailing closed-month allocation, cached to a versioned file with a staleness guard, refreshed monthly — and components that cannot be cleanly derived are flagged as estimates rather than presented as actuals.",
+        "Confidentiality enforced in code rather than in a prompt: full cost and margin figures render only in an internal channel, every rep-facing channel gets a sanitized verdict, and an unknown channel fails closed. That moves sanitization out of a fragile instruction and keeps cost data out of the model's context entirely.",
+        "Merged three separate review arms into one combined tool so that a partial review is structurally impossible.",
+        "Deleted a static list of qualifying brands in favor of a live lookup, and built a deterministic three-state classifier over free-text status where the ambiguous state is the safe default that routes to a human."
+      ],
+      "follow_up_detail": [
+        "He calibrated one field on real coverage data rather than trusting the obvious choice: the field that looks right is well populated but every value is a placeholder that would have multiplied annual deals twelvefold. He chose the less-populated real field with a date-derived fallback and asking the rep as a last resort — and found a large share of quotes carry no explicit term at all, contradicting the assumption that every quote has one.",
+        "He fixed a false positive by understanding the data model rather than adding an exception: the check was flagging a package's own child line items as legacy. The rule became — a quote containing a current package passes, ignore child lines at or below that tier, but still warn on a line richer than the package, which caught a deliberate mis-build.",
+        "He reframed a billing-system dependency out of existence: evaluate an amendment's margin in isolation, on the net-new lines as if new business and labeled as such, which reduced the billing system's role to supplying one date.",
+        "He rejected four candidate architectures for how the bot reaches cost data before landing on one where the sheet stays fully private, the model never sees cost, and a bad credential cannot crash startup."
+      ]
+    },
+    {
+      "id": "renewal_coverage_gap",
+      "title": "Established that the automation everyone believed in did not exist",
+      "maps_to": [
+        "systems design",
+        "retention",
+        "process design",
+        "data integrity",
+        "cross-functional"
+      ],
+      "situation": "More than half of the actively-managed customer book had no open renewal opportunity — a large share of recurring revenue with nothing in the pipeline to renew it. The assumption across the organization was that an automation created these.",
+      "task": "Find out why, and get it fixed.",
+      "action": "He scanned every active automation in the CRM through the platform's tooling interface rather than asking around. Only a handful create opportunities at all, and none of them create renewals — the one whose name implies it is a labeling automation that sets a type on opportunities that already exist. He then traced who had actually been doing it manually and found a single person had created thousands of renewals over several years and had stopped months earlier, which is when the gap began growing. He recorded plainly that his own prior — and his colleagues' — had been wrong: people had been referencing an automation that never existed.",
+      "key_decisions": [
+        "Scanned the automations directly rather than relying on institutional memory, which is the only reason the absence was provable rather than suspected.",
+        "Segmented the gap for triage rather than reporting one number — the large majority are next-cycle gaps where a prior renewal closed and nobody created the following year's, most of them well overdue.",
+        "Split the fix into phases with different owners: a manual backfill he could deliver immediately, a written specification for the platform owner, and a dashboard so the gap stays visible rather than needing rediscovery.",
+        "Wrote an idempotency guard into the specification — skip if an open renewal already exists for the account — because the obvious implementation would duplicate on re-run.",
+        "Left open questions for the system owner rather than guessing, including why a related automation contains scaffolding implying a creator that does not exist."
+      ],
+      "follow_up_detail": [
+        "The deliverable was a categorized file sorted by revenue within category, so the backfill could start with the accounts that matter rather than alphabetically.",
+        "This finding became load-bearing in two other pieces of work: it is the structural reason the customer-success compensation plan cannot reach the company retention objective, and it appears in his memo on what the function should own as the concrete example of churn being treated reactively.",
+        "The re-run instruction is written into the note — run the diagnosis script first, because the categories shift as renewals close.",
+        "It also connects to a separate finding that a revenue field on the account was a formula multiplying the most recent payment by twelve, which breaks whenever that payment is a prorated amendment — a book-wide discrepancy affecting hundreds of accounts."
+      ]
+    },
+    {
+      "id": "scoring_model_to_prod",
       "title": "Shipped a scoring model into the CRM instead of handing over an analysis",
       "maps_to": [
         "analysis to implementation",
-        "process and systems design",
+        "systems design",
         "automation",
-        "adoption"
+        "adoption",
+        "process design"
       ],
-      "situation": "The implementation team had no way to forecast how complex or long a new project would be, so staffing and customer commitments were guesswork.",
-      "task": "Turn that into something usable inside the tool the team already worked in — not a spreadsheet on the side.",
-      "action": "Built the scoring model from historical project and CRM data, then shipped it as native formula fields on the request object: a complexity score, a tier, a predicted duration bucket, and an editable classification field the team fills in themselves. When the standard permissions deploy path silently failed in production, fell back to the platform's Tooling API to grant field permissions profile by profile rather than leaving the fields invisible.",
-      "result": "Live in production, scoring every historical record on day one, with the tier distribution matching what the sandbox predicted. The implementation lead asked for the raw score to be surfaced on the page and scheduled a refinement pass a quarter out — real adoption, not a one-off."
+      "situation": "The implementation team had no way to forecast how complex or how long a new project would be, so staffing and customer commitments were guesswork. An analysis existed; nothing operational did.",
+      "task": "Turn it into something the team uses in the tool they already work in — not a spreadsheet alongside it.",
+      "action": "He pushed to land it as native formula fields on the request object rather than a dashboard or a model that runs somewhere else, so every record scores automatically at the point of work: a complexity score, a tier, a predicted duration bucket, and an editable classification field the team fills in themselves. He iterated twice on the lead's actual review feedback rather than defending the first version — putting the raw score back on the page, replacing continuous duration predictions with four stepped buckets while keeping tier assignment score-based, and adding a classification picklist the lead requested himself. When the standard permissions deploy path silently failed in production, he diagnosed it rather than retrying and worked around it through the platform's tooling interface, granting field permissions profile by profile.",
+      "key_decisions": [
+        "Landed it as formula fields rather than a report, because a model that requires someone to go look at it does not change staffing decisions.",
+        "Replaced continuous duration output with stepped buckets on the lead's feedback — precision the model did not have was making the output harder to act on, not easier.",
+        "Made a deliberate call on blank data and stated its consequence: unclassified records score at the bottom of the scale until the team classifies them, which means most existing records read as simple until backfilled.",
+        "Diagnosed the failed permissions path instead of retrying it, established the correct permission set by fixing one field manually, then mirrored that exact set onto the remaining fields by script.",
+        "Left two known-imperfect heuristics documented as stopgaps rather than hiding them, including one that misfires on a specific input format."
+      ],
+      "follow_up_detail": [
+        "Built demonstration records spanning the full tier range so the stakeholder could evaluate against real shapes rather than a specification.",
+        "Verified the production tier distribution against the sandbox baseline before declaring success — they matched, which is what makes the deploy trustworthy rather than merely complete.",
+        "Nearly eight hundred existing records scored automatically on deploy.",
+        "The adoption signal is the part that matters: the team lead asked for the raw score to be surfaced on the page and scheduled a refinement pass a quarter out, which is a user engaging with a tool rather than accepting a delivery.",
+        "He looped the platform administrator in for the production cutover specifically because the new picklist is schema rather than configuration."
+      ]
     },
     {
-      "id": "promo_realization",
-      "title": "Replaced a contractual promise with what actually shows up",
+      "id": "worse_failure_on_purpose",
+      "title": "Chose a worse steady state to eliminate a catastrophic failure",
       "maps_to": [
-        "forecast hygiene",
-        "revenue point of view",
-        "Finance partnership"
+        "systems design",
+        "automation",
+        "reliability",
+        "trade-off analysis"
       ],
-      "situation": "A senior leader asked for a forecast built on contractually promised revenue from expiring promotional pricing. The naive answer was to sum it.",
-      "task": "Pressure-test that number before it reached a board narrative.",
-      "action": "Backtested every historical customer-and-event pair over more than a year with a fixed post-expiry window, asking how much of the promised amount actually appeared in revenue. Split the answer by product family and found the two behave completely differently: fixed-price products largely land after an onboarding lag, while per-employee usage products barely realize at all — the contracted quantity is a ceiling untethered from billable headcount.",
-      "result": "Roughly a tenth of the promised amount was realized on a blended basis, with the majority of events realizing almost nothing. Reframed the conversation from 'this revenue is coming' to a small pool of clearly-bad contracted revenue with commissions already paid, plus realization curves to plan around. Surfaced a handful of rep-level over-quotes for coaching rather than punishment."
+      "situation": "A weekly automation stamped records with a dated tag and advanced every rep's list-view filter to match, in lockstep. When the advance failed, all the list views froze on the prior date and every rep's working list read empty. It failed three weeks running, including once after what was supposed to be a durable fix.",
+      "task": "Stop the recurrence.",
+      "action": "He root-caused the failure precisely rather than blaming the schedule — a deploy poll deadline too short for a slow queue, and an unguarded call after the loop that raised on a still-in-progress deploy, crashing the run *after* the re-stamp had already committed. He hardened it: longer deadline, guarded call, one automatic retry, and a loud failure naming the recovery command. When it failed again the following week he stopped hardening and changed the design instead. The new version drops the date entirely — a static tag, a filter deployed once, no weekly advance — which makes the desync structurally impossible rather than merely less likely. It was cheap because the code already treated membership as tag presence; the date had only ever been provenance.",
+      "key_decisions": [
+        "Stopped hardening after the second failure and changed the design, rather than adding a third layer of retry to a mechanism that kept finding new ways to break.",
+        "Named the trade-off explicitly and accepted it: a static tag has no passive expiry, so removal now depends entirely on the reconciliation step blanking the field. The failure mode flips from catastrophic — every list empty — to benign, a few already-worked records lingering.",
+        "Followed the consequence to its second-order effect rather than declaring done: an earlier assumption that certain records age off naturally relied on the dated expiry and no longer holds. He sized the residual, recommended accepting it for launch, and specified the fast-follow if it proved material.",
+        "Migrated with zero downtime — added the static tag while keeping the dated value, switched the views, then drained the legacy values through the reconciliation, with a rollback snapshot written first.",
+        "Left a do-not-re-litigate note explaining why the previous design was deliberate, so the next person does not undo the reasoning by accident."
+      ],
+      "follow_up_detail": [
+        "He preserved production secrets during the deploy by pushing cell by cell through the platform's command-line tool rather than a project import, which wipes credentials — a gotcha he had documented earlier and applied here.",
+        "The validation checkpoint was scheduled with an automated report and a stated failure signal, rather than declaring victory at deploy.",
+        "The remaining empty views after launch were all correctly explained — reps with no allocation on a new roster, not a filter fault — which is the distinction between a bug and an expected state.",
+        "In the same session he closed an unrelated leak: disqualified records were filtered only at add time, so a number of them lingered. He added a real-time filter, a reclaim path in the reconciliation, and a one-time cleanup."
+      ]
+    },
+    {
+      "id": "commissions_platform",
+      "title": "Ported five fragile notebooks into a versioned platform",
+      "maps_to": [
+        "systems design",
+        "automation",
+        "process design",
+        "build-vs-buy",
+        "operational ownership"
+      ],
+      "situation": "Commission calculation for six teams ran on five unversioned notebooks. Manual adjustments required hand-editing warehouse queries. The data lead had flagged the write-back path as lacking transactional controls.",
+      "task": "Port everything to a real codebase without silently changing anyone's pay.",
+      "action": "The method is the accomplishment: every phase was validated against a historical fixture from the old system, and every single row difference had to be *explained*, not tolerated. One runner came back with no missing rows and a handful of extras, each attributed to legitimate drift — a roster addition, releases after the cutoff, deliberately skipped items. Another had a missing row traced to a type change on one specific opportunity. A third matched exactly, the only difference being integer-versus-float representation. He also refactored the source-of-truth spreadsheet structurally before porting the code, merging three parallel definition tabs into one with a scope schema so a single join handles every scoping rule.",
+      "key_decisions": [
+        "Used historical fixtures as the correctness contract rather than testing against expected behavior, because the requirement was 'nobody's pay changes silently' and only a real comparison proves that.",
+        "Chose a spreadsheet as the operational database *deliberately* rather than transitionally, and wrote down both the reasoning and the revisit triggers: at this scale the API limits do not bite, operators including a non-engineer covering during leave can inspect and edit the source of truth directly — which is a feature — and a future migration changes the read-write layer rather than the data shape.",
+        "Stated the principle that settles it: the storage decision is reversible, the permissions philosophy is not. Get the permissions right and the storage can move later.",
+        "Named three specific conditions that would trigger revisiting it, rather than leaving the choice as a matter of taste.",
+        "Deliberately broke a legacy generator when migrating the definition tabs, and said so, rather than maintaining two readers."
+      ],
+      "follow_up_detail": [
+        "He caught his own arithmetic error during the port and corrected it: the documentation described a payout as multiplying by a tier rate, but the actual formula also multiplies by the rep's normal base rate — the accelerator pays an extra tier-rate of normal commission per over-quota dollar.",
+        "He caught a systematic off-by-one in the pay-cycle convention that had a quarterly runner firing in the wrong months, and turned it into a standing rule plus a first-action-of-every-session orientation step, because he had seen it produce a wrong conclusion in a prior document.",
+        "He built recurring safeguards into the pipeline rather than the runbook — an audit that runs automatically before publish, and an adjustments module with idempotent preview and apply.",
+        "He later replaced part of his own architecture after using it: a per-month code module for corrections was unnecessary indirection for routine work, so he built an inline form that persists to the same file and drains through the identical apply machinery — not a parallel path, a different front door onto the same one — while enumerating exactly when the original is still the right choice."
+      ]
+    },
+    {
+      "id": "revops_mandate_memo",
+      "title": "Wrote his own mandate and asked to be told what was not his",
+      "maps_to": [
+        "function ownership",
+        "operating model",
+        "cross-functional",
+        "executive communication",
+        "prioritization"
+      ],
+      "situation": "He was functioning as the de-facto revenue-operations lead with no published scope. Reporting work overlapping his was appearing from adjacent functions without handoffs, platform execution lived elsewhere while he was informally the business-side owner, and the boundary with the executive dashboard kept shifting. He had received signals that he was operating outside his lane.",
+      "task": "Turn a diffuse frustration into a document his manager could act on.",
+      "action": "He led with observations rather than asks. Three of them: the work required to hit the stated sales objective is scattered across multiple functions with nobody accountable for the outcome, so each person does their own interpretation of what helps. Churn is treated reactively — by the time it appears in a dashboard the account has already drifted — backed by his own finding that most of the managed book had no open renewal opportunity and that team-level gross retention was being masked by expansion in the headline number. And the administrative burden on sellers keeps being solved one instance at a time when it is a category. Then he diagnosed the blockers as system problems rather than people problems, and made a request most people do not make.",
+      "key_decisions": [
+        "Asked leadership to tell him what was *not* his: 'for each of these, what's the right home? I'd rather have one clear lane than a fuzzy claim on all of it.'",
+        "Read the outside-your-lane signal as a symptom rather than a rebuke — 'I take those seriously, and I read them as me making priority calls in a vacuum, not me actually overreaching.'",
+        "Named the invisible tradeoff directly: saying yes to one request is implicitly saying no to another, and that arithmetic is not visible to the person asking.",
+        "Made the governance ask conditional and named its failure mode up front — a rubric only works if leadership will engage when something gets deprioritized. 'If you're up for that, I'll build it. If not, I'd rather know now than spend cycles on governance that won't get respected.'",
+        "Diagnosed fragmentation without blaming anyone: 'the output looks incoherent — not because anyone is doing bad work, but because no one is integrating it.'"
+      ],
+      "follow_up_detail": [
+        "The memo enumerated the full actual scope across three categories — operational, data and analytics, and strategy and design — which made the size of the undefined role visible rather than arguable.",
+        "He paired it with a proposed organizational structure and co-authored a split between revenue operations and platform engineering: one owns strategy, policy and judgment, the other owns build, automation and integration.",
+        "He stated the capacity reality plainly rather than absorbing it — the current team cannot execute even one major priority effectively.",
+        "A self-observation from the same period that says something about how he works: 'I was so excited by how much faster I could get things done with AI that I finally paused to think — okay, I can do stuff a lot faster, but that doesn't mean I can do everything immediately. I still have finite hours in the day.'",
+        "He was subsequently handed ownership of the cross-functional coordination meeting and redefined its attendee list."
+      ]
+    },
+    {
+      "id": "prioritization_rubric",
+      "title": "Built the rubric that decides what gets worked on",
+      "maps_to": [
+        "prioritization",
+        "operating model",
+        "function ownership",
+        "stakeholder management"
+      ],
+      "situation": "Every cross-functional request competed equally for his time, and he had no published frame to point at when pushing back. He had named the gap himself in a memo to his manager: priority calls were being made in a vacuum, which is what made them look arbitrary from outside.",
+      "task": "Build the governance he had asked permission to build.",
+      "action": "He wrote a mission statement for the function and a priority scale scored on one thing only — revenue impact, counting both top-line growth and churn reduction — mapped directly onto the ticketing system's priority field so the scoring lands where the work already lives rather than in a separate document. Each level carries a threshold and a pattern rather than a vague description: the top level is a direct multi-million-dollar move or a systemic compounding effect, such as a decision gating an org-wide program or a system a double-digit number of reps use daily. The bottom level is reactive administration with no revenue thread, and he made it a real bucket rather than a polite fiction.",
+      "key_decisions": [
+        "Scored on revenue impact only, with explicit anti-patterns: do not score on effort, do not score on complexity, do not score on stakeholder pressure.",
+        "Forbade reactive re-scoring — a priority moves only when scope changes materially, not when someone complains about where their request landed.",
+        "Wrote the anti-pattern against padding: the lowest bucket is real, and inflating items into a higher one to feel productive defeats the instrument.",
+        "Built it into the daily selection ritual rather than leaving it as a document — highest priority first, ties broken by staleness — so it is used every morning rather than cited occasionally.",
+        "Stated the purpose in one line: converting 'Joe decided' into 'the system decided.'"
+      ],
+      "follow_up_detail": [
+        "The application procedure is specific: score on creation, capture the reasoning in one sentence, and on a material scope change add a comment recording the old and new priority with the reason — so the audit trail lives with the work.",
+        "It doubles as the pushback instrument: if a request does not clear the middle threshold, it queues behind anything that does, and the conversation is about the rubric rather than about him.",
+        "He applied it to existing tickets the same day rather than leaving it aspirational.",
+        "It reads as the answer to two questions a planning role will always ask — how do you prioritize, and what happens when your read contradicts what a leader wants."
+      ]
+    },
+    {
+      "id": "hiring_bar",
+      "title": "Designed the hiring bar for his own counterpart",
+      "maps_to": [
+        "hiring",
+        "assessment design",
+        "team building",
+        "operating model"
+      ],
+      "situation": "The company was hiring a revenue-operations manager to partner with him — effectively a second version of his own role — on a short timeline, run jointly with Finance and a recruiter.",
+      "task": "Design a screen and an assessment that actually discriminate, in a market where AI makes a polished deliverable table stakes.",
+      "action": "He made an uncomfortable trade explicitly and wrote it down: technical and AI proficiency is the *bar*, and operational strength is the *differentiator* — the dimension where this hire should be stronger than he is. Strong operations with weak technical does not advance, stated as a decision rather than left as a judgment call. He wrote the screen to be self-contained for a non-technical screener with deeper probes tagged for himself and Finance, and built the questions around falsifiable signals: the AI question asks for the last thing the candidate actually built or shipped and lists the vocabulary a real user emits, treating the absence of a verification story as a red flag rather than neutral. The take-home was built from a real internal project, anonymized with synthetic data and deliberately messy — several raw files from two systems, no data dictionary.",
+      "key_decisions": [
+        "Planted a marquee trap that is a judgment test rather than a puzzle: a set of records where neither an identifier join nor a fuzzy name match reconnects them, and the clean key is the billing email. Fuzzy matching is the obstacle, not the intended solution.",
+        "Made the consequence the point rather than the trap: miss it and you classify a large group of known, often-contracted accounts as unbound and repriceable — the exact error that has real customer consequences.",
+        "Made the headline number the single most diagnostic signal: a naive read of one revenue column against true paying revenue differ materially, and where a candidate lands — and whether they can explain why — is the assessment.",
+        "Calibrated the case by running it fresh through isolated AI models to see which traps a machine clears unassisted. The frontier model produced a complete, reproducible answer and still missed the marquee trap; the mid-tier model produced artifacts that did not reconcile with each other.",
+        "Drew the conclusion that shaped the rubric: model tier sets the polish floor, so polish is not signal — the candidate's judgment is, and both tiers missed the trap unprompted."
+      ],
+      "follow_up_detail": [
+        "He simplified the case mid-build when a construct got in the way, and when he realized the change had only been applied to the shared copy he went back and matched the source — retaining an unused random draw so the same seed still reproduces the published dataset exactly.",
+        "He graded a real finalist against it with the same discipline, wrote the exact live probe that would decide the outcome, and named her ceiling if she defended the wrong answer.",
+        "He weighted her strengths honestly too: her financial model tied across every artifact, which is precisely what the mid-tier calibration baseline had failed.",
+        "The AI-enablement pillar of the job description is his own teaching initiative turned into a role requirement, and one screen question grades for hands-on measured adoption while marking a one-and-done training session as a red flag."
+      ]
+    },
+    {
+      "id": "teaching_the_team",
+      "title": "Turned a reporting bottleneck into distributed capability",
+      "maps_to": [
+        "enablement",
+        "adoption",
+        "agentic AI",
+        "change management",
+        "cross-functional"
+      ],
+      "situation": "Every recurring reporting request routed through him. Non-technical colleagues across customer success, implementation and sales management had no way to build anything themselves.",
+      "task": "Turn a one-person bottleneck into capability distributed across teams.",
+      "action": "He started informally and dated it honestly, including a note to himself about not overclaiming — a practitioner beginning to bring others along, not the operator of a deployed program, with an instruction to soften the claim if it stalled. Then he ran a hands-on session where each attendee built their own real working application rather than watching a demo: a review app for one colleague, a data app for another, a calculator for a third. He shipped a three-part video series the same afternoon so the session was reusable rather than a one-off, framed to make it feel achievable — a working app in about fifteen minutes of typing plus fifteen minutes of waiting.",
+      "key_decisions": [
+        "Made attendees build rather than watch, because a demo produces admiration and a build produces capability.",
+        "Shipped the follow-up videos the same day, while the session was still fresh and before the momentum decayed.",
+        "Cleared the actual blocker himself rather than assigning it — chased read-only warehouse provisioning for attendees, and established the cost fact that unblocked the request, that the warehouse bills per query rather than per user so read access carries no ongoing cost.",
+        "Tied it to his own scope with a stated reason: enabling others to build their own solutions is what frees him to focus on where leadership actually wants him.",
+        "Kept the claim honest in his own job-search materials, with an explicit instruction to remove the hook if the initiative did not take."
+      ],
+      "follow_up_detail": [
+        "The adoption compounded visibly — a senior stakeholder reported building an automation of their own, unprompted, off the back of the session.",
+        "He demonstrated the notebook-building workflow to the growth analyst separately so she could generate dashboards the same way.",
+        "He seeded a company-wide conversation about bot and agent sprawl, which pulled in the owner of roughly ten live bots and produced a router design discussion — with him as convener rather than owner.",
+        "Enablement became one of the named functions in his mandate memo and a pillar of the role he was hiring for, which is the difference between an initiative and a durable change."
+      ]
+    },
+    {
+      "id": "honest_handoff",
+      "title": "Refused to hide the mess in a handoff",
+      "maps_to": [
+        "operational ownership",
+        "documentation",
+        "risk communication",
+        "team continuity"
+      ],
+      "situation": "He was handing five recurring, business-critical processes to four people before a six-week leave: monthly commissions across six teams, deal desk, the monthly business review, the leadership forecast meeting, and a live price-increase program.",
+      "task": "Make each one runnable by someone else.",
+      "action": "He rejected his own too-clean first draft. His words: we need to be super honest about the open next steps I have not tackled — the price increases are definitely the biggest mess I will be leaving behind. The reasoning became a durable rule: a handoff that hides the mess is worse than none, because the person covering needs the truth. One document per area, one named owner per area, matched to function rather than availability. Each document opens with a blunt state-at-handoff section rather than an idealized process description. The commissions document was written for a finance person rather than an engineer — plain language, technical asides explicitly marked skippable, every formula given a worked example with real numbers so she could check the math herself.",
+      "key_decisions": [
+        "Matched owners to function rather than to who had capacity, and named a single escalation owner for time-sensitive decisions so nobody would wait on him.",
+        "Set an explicit default posture rather than leaving judgment ambiguous: follow the documented process; if it is a new decision, log it and route it rather than improvising something new during the leave.",
+        "Included an explicit unknown-confirm-before-relying-on section listing genuine open questions, including a contradiction between his own newer note and older documentation which he disclosed rather than papered over.",
+        "Made a scoping call that unblocked his successor: a large reconciliation effort is a soft gate rather than a wall — only a specific small set must be corrected before the next wave, the rest runs in parallel.",
+        "Solved the access problem structurally rather than by sharing credentials, adding a co-owner across every repository so the work could be run and maintained without him."
+      ],
+      "follow_up_detail": [
+        "He gave permission along with the process, for a gap he could not close: there is no system of record for *why* a compensation change happened, and that context lived in messages he would not have access to. So he set the precedent explicitly — it is completely normal to verify by searching your own history, and a missing paper trail is not a blocker.",
+        "The commissions document lists eight named mistakes learned the hard way, each with the symptom, so the reader recognizes them rather than rediscovering them.",
+        "It teaches distinctions rather than steps — two different quarterly and monthly artifacts that both get casually called the same thing, and which months a quarterly process correctly does *not* run, so a skipped run reads as expected rather than as a bug.",
+        "Closing precedence rule: where the code and a document disagree, the code wins; where you are unsure, the escalation owner wins."
+      ]
+    },
+    {
+      "id": "redistribution_algorithm",
+      "title": "Redistributed a departed rep’s book, and balanced the bad work too",
+      "maps_to": [
+        "territory design",
+        "coverage model",
+        "process design",
+        "fairness"
+      ],
+      "situation": "A seller was deactivated, leaving dozens of open opportunities and well over a thousand accounts unowned. His manager wanted full coverage so the customer-facing team would have someone to contact on every account.",
+      "task": "Redistribute cleanly.",
+      "action": "He preferred continuity over even distribution, in a stated tier order: current account owner first, then prior opportunity owner on the account, then anyone appearing in the account's ownership history, then anyone with recent activity on it, and only then a round-robin. Late-stage opportunities prefer senior sellers within their tier, with soft and hard caps on how many any one person receives. He measured how much signal actually existed and reported it honestly — fewer than half the opportunities had any continuity signal at all, so the rest were genuinely arbitrary and he said so rather than implying the algorithm knew more than it did.",
+      "key_decisions": [
+        "Tracked and balanced the *stale* work separately from the fresh work — many of the opportunities had close dates well past, meaning they create hygiene work rather than selling opportunity, and letting the rotation land them wherever it happened to land would have dumped all of it on one or two people.",
+        "Refused to let staleness override real continuity: if someone has genuine history with an account, they get it even if all of it is stale. Fairness in the cleanup does not outrank knowing the customer.",
+        "Bucketed the accounts by whether coverage was actually needed — real customers routed through the same tiered logic, prospects flipped to a house owner with no active coverage.",
+        "Suppressed notifications on the coverage backfill deliberately, because a backfill is not an actionable handoff and notifying on it trains people to ignore notifications.",
+        "Raised three caveats to the manager rather than silently deciding them, including two opportunities whose type normally routes to a different team entirely."
+      ],
+      "follow_up_detail": [
+        "The result of the stale-balancing choice, stated as a check: every seller received a small comparable number of stale items rather than one person receiving all of them.",
+        "He flagged a sequencing risk nobody else would have caught — do not reassign until the departing rep's final commission cycle is locked, or movement on these opportunities distorts his final payment.",
+        "He verified after execution rather than trusting the run: full match on the customer accounts, a sampled match on the prospects, and a direct check that the departed rep owned zero records.",
+        "He used an execution pattern validated on a prior smaller move — single-record updates so the organization's automations fire per record — rather than a bulk path that would have skipped them."
+      ]
     }
   ]
 }

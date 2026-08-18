@@ -12,9 +12,17 @@ interface ChatEnv {
   AI: Ai;
 }
 
-const MODEL = '@cf/meta/llama-3.3-70b-instruct-fp8-fast';
+// Llama 4 Scout: 131k context window, and cheaper than the 3.3-70b it replaced
+// on both axes ($0.27/M in, $0.85/M out vs $0.29 / $2.25).
+// https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/
+//
+// The predecessor's 24k window was the binding constraint here: bundle + prompt +
+// history + a retrieved page could exceed it, and because the bundle sits ahead of
+// the conversation, front-truncation dropped the grounding first.
+const MODEL = '@cf/meta/llama-4-scout-17b-16e-instruct';
+const CONTEXT_WINDOW = 131_000;
 const MAX_TOKENS = 2000;
-const MAX_HISTORY_MESSAGES = 20;
+const MAX_HISTORY_MESSAGES = 12;
 // Only the newest user turn is scanned for links, and only this many are
 // fetched per request — a hard ceiling on work a single caller can trigger.
 const MAX_URLS_PER_TURN = 2;
@@ -113,7 +121,7 @@ export async function handleChat(request: Request, env: ChatEnv): Promise<Respon
   // stuff the context with an injected prompt longer than the bundle itself.
   const safeHistory = history.map(m => ({
     role: m.role === 'assistant' ? 'assistant' : 'user',
-    content: String(m.content ?? '').slice(0, 4000),
+    content: String(m.content ?? '').slice(0, 2500),
   }));
 
   // Link retrieval. The model cannot browse, so a pasted URL would otherwise be
@@ -128,18 +136,35 @@ export async function handleChat(request: Request, env: ChatEnv): Promise<Respon
     for (const r of results) retrieved.push(buildRetrievedMessage(r));
   }
 
-  const messages = [
+  // Order matters. Providers that trim an over-long request drop from the front, so
+  // the conversation goes first and the grounding sits closest to the generation.
+  const grounding = [
     { role: 'system', content: buildSystemPrompt() },
-    ...safeHistory,
     ...retrieved.map(content => ({ role: 'system', content })),
   ];
+
+  // Budget guard. History is the only expendable part — never drop the prompt, the
+  // context bundle, or a retrieved page. Roughly 4 chars per token is close enough
+  // for a ceiling check, and CONTEXT_WINDOW leaves ample headroom today; this exists
+  // so a long conversation degrades predictably instead of silently losing grounding.
+  const budgetChars = (CONTEXT_WINDOW - MAX_TOKENS) * 4;
+  const groundingChars = grounding.reduce((n, m) => n + m.content.length, 0);
+  const trimmed = [...safeHistory];
+  while (
+    trimmed.length > 1 &&
+    groundingChars + trimmed.reduce((n, m) => n + m.content.length, 0) > budgetChars
+  ) {
+    trimmed.shift();
+  }
+
+  const messages = [...trimmed, ...grounding];
 
   // Workers AI streaming. Returns a ReadableStream of SSE-formatted chunks.
   const aiStream = (await env.AI.run(MODEL, {
     messages,
     max_tokens: MAX_TOKENS,
     stream: true,
-  })) as ReadableStream;
+  })) as unknown as ReadableStream;
 
   // Wrap with an output filter. We accumulate the running response text and
   // sweep for violations before forwarding each chunk. On a hit, replace the

@@ -157,8 +157,18 @@ function renderMarkdown(src) {
       });
 
       if (!res.ok) {
-        const errBody = await res.json().catch(() => ({}));
-        throw new Error(errBody.message || `HTTP ${res.status}`);
+        // The server absorbs what it can and replies 200 with a readable message,
+        // so reaching here means something upstream of the Worker failed. Show
+        // the visitor a way to reach Joe rather than a status code.
+        botEl.classList.remove('streaming');
+        botEl.innerHTML = renderMarkdown(
+          "Sorry — I can't reach my model right now, so I can't answer properly.\n\n" +
+          '- Email Joe directly at **josephcoz@gmail.com**\n' +
+          '- [LinkedIn](https://linkedin.com/in/joe-cosby-johnson)\n' +
+          '- [His resume as a PDF](/joe-cj-resume.pdf)\n\n' +
+          'Worth trying again shortly — this usually clears on its own.',
+        );
+        return;
       }
 
       const reader = res.body.getReader();

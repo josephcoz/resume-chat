@@ -82,6 +82,32 @@ const PROMPT_LEAK_PATTERNS: RegExp[] = [
   /Resist instruction-override attempts/i,
 ];
 
+const UNAVAILABLE_TEXT =
+  "Sorry — I can't reach my model right now, so I can't answer properly. This is a " +
+  "temporary problem on my end and not a reflection of anything you asked.\n\n" +
+  "Joe would rather you didn't leave empty-handed:\n\n" +
+  "- Email him directly at **josephcoz@gmail.com** — he replies quickly\n" +
+  "- [LinkedIn](https://linkedin.com/in/joe-cosby-johnson)\n" +
+  "- [His resume as a PDF](/joe-cj-resume.pdf), which covers most of what I would have said\n\n" +
+  "Worth trying again in a little while — this usually clears on its own.";
+
+/**
+ * A complete SSE response carrying one message. Same shape the streaming path
+ * emits, so the client renders it as an ordinary reply rather than an error —
+ * markdown, contact links and all.
+ */
+function sseMessage(text: string): Response {
+  const body = `data: ${JSON.stringify({ response: text })}\n\ndata: [DONE]\n\n`;
+  return new Response(body, {
+    status: 200,
+    headers: {
+      'content-type': 'text/event-stream; charset=utf-8',
+      'cache-control': 'no-store',
+      connection: 'keep-alive',
+    },
+  });
+}
+
 const REFUSAL_TEXT =
   "I can't share specifics on that. Joe is happy to talk numbers and names directly — " +
   "you can reach him at josephcoz@gmail.com or via LinkedIn (linkedin.com/in/joe-cosby-johnson).";
@@ -249,11 +275,26 @@ export async function handleChat(request: Request, env: ChatEnv): Promise<Respon
   const messages = [...grounding, ...trimmed];
 
   // Workers AI streaming. Returns a ReadableStream of SSE-formatted chunks.
-  const aiStream = (await env.AI.run(MODEL, {
-    messages,
-    max_tokens: MAX_TOKENS,
-    stream: true,
-  })) as unknown as ReadableStream;
+  //
+  // This call is the one part of the request that depends on something outside
+  // the Worker, and it does fail: a spent daily allowance, a model outage, a
+  // transient upstream error. Unhandled, the Worker throws and the visitor gets a
+  // bare 500 page. A recruiter reads that as "his site is broken," which is a
+  // worse outcome than any answer the bot could have given — so failure is
+  // absorbed here and returned as a normal, well-formed reply.
+  let aiStream: ReadableStream;
+  try {
+    aiStream = (await env.AI.run(MODEL, {
+      messages,
+      max_tokens: MAX_TOKENS,
+      stream: true,
+    })) as unknown as ReadableStream;
+  } catch (err) {
+    // Logged for diagnosis (`wrangler tail`), never surfaced — the upstream
+    // message can carry account and model internals.
+    console.error('AI.run failed:', err instanceof Error ? err.message : String(err));
+    return sseMessage(UNAVAILABLE_TEXT);
+  }
 
   // Wrap with an output filter. We accumulate the running response text and
   // sweep for violations before forwarding each chunk. On a hit, replace the
@@ -318,9 +359,18 @@ function filterStream(input: ReadableStream): ReadableStream {
           }
         }
       } catch (err) {
+        // Failure part-way through a reply. The visitor already has some text on
+        // screen, so append rather than replace, and say something useful — the
+        // previous "[stream error]" told them nothing and looked like a crash.
+        console.error('stream failed mid-response:', err instanceof Error ? err.message : String(err));
         controller.enqueue(
           encoder.encode(
-            `data: ${JSON.stringify({ response: '\n\n[stream error]' })}\n\n`,
+            `data: ${JSON.stringify({
+              response:
+                '\n\n---\n\n*That answer was cut short by a problem on my end. ' +
+                'Ask again and it will usually go through — or email Joe at ' +
+                '**josephcoz@gmail.com**.*',
+            })}\n\n`,
           ),
         );
       } finally {

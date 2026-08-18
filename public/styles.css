@@ -242,3 +242,44 @@ html, body {
   .chat-intro h1 { font-size: 24px; }
   .message { max-width: 92%; }
 }
+
+/* Rendered markdown inside a bot message.
+   Answers arrive as markdown; app.js renders it after the stream completes.
+   Margins collapse at the edges so a bubble containing only a list or a
+   heading doesn't gain phantom padding. */
+.message.bot > :first-child { margin-top: 0; }
+.message.bot > :last-child { margin-bottom: 0; }
+
+.message.bot p { margin: 0 0 0.7em; }
+
+.message.bot h3,
+.message.bot h4,
+.message.bot h5,
+.message.bot h6 {
+  margin: 1.1em 0 0.45em;
+  font-weight: 650;
+  line-height: 1.25;
+}
+.message.bot h3 { font-size: 1.08em; }
+.message.bot h4 { font-size: 1.02em; }
+.message.bot h5,
+.message.bot h6 { font-size: 1em; color: var(--accent); }
+
+.message.bot ul,
+.message.bot ol { margin: 0 0 0.7em; padding-left: 1.35em; }
+.message.bot li { margin: 0.25em 0; }
+.message.bot li > strong:first-child { font-weight: 650; }
+
+.message.bot code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--line) 55%, transparent);
+}
+
+.message.bot hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 1em 0;
+}

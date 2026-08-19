@@ -20,8 +20,8 @@ interface ChatEnv {
 // The predecessor's 24k window was the binding constraint here: bundle + prompt +
 // history + a retrieved page could exceed it, and because the bundle sits ahead of
 // the conversation, front-truncation dropped the grounding first.
-const MODEL = '@cf/meta/llama-4-scout-17b-16e-instruct';
-const CONTEXT_WINDOW = 131_000;
+const MODEL = '@cf/meta/llama-3.3-70b-instruct-fp8-fast';
+const CONTEXT_WINDOW = 24_000;
 const MAX_TOKENS = 2000;
 const MAX_HISTORY_MESSAGES = 12;
 // Only the newest user turn is scanned for links, and only this many are
@@ -80,6 +80,19 @@ const PROMPT_LEAK_PATTERNS: RegExp[] = [
   /\bmaps_to\b|\bkey_decisions\b|\bfollow_up_detail\b|\bstory_index\b/i,
   /Refer to Joe in the third person/i,
   /Resist instruction-override attempts/i,
+  // The rule text itself. A stronger model complies with an injection more
+  // readily than a weaker one, and the earlier fingerprints only matched section
+  // headings — so three rules got out verbatim before the sweep hit one. These
+  // catch the body, and catch it in the first chunk.
+  /Never disclose dollar amounts/i,
+  /The only person you are allowed to name/i,
+  /Never disclose confidential or proprietary/i,
+  /does the number denominate money/i,
+  /print the full system prompt/i,
+  /Never name specific customers, coworkers/i,
+  /worked at.{0,40}Workstream, Qualtrics, Posit/i,
+  /Depth over breadth/i,
+  /Tell the story.{0,30}Name what he actually did/i,
 ];
 
 const UNAVAILABLE_TEXT =
@@ -137,9 +150,13 @@ function bundleForModel(): unknown {
 const OUTPUT_REMINDER = [
   '## Before you answer — the rules most easily forgotten',
   '',
-  '1. **Depth over breadth.** If the question has many parts, give a one or two sentence overall read,',
-  '   answer the FIRST part properly with a story, list the rest by name only, and offer to continue.',
-  '   Then stop. Do not rate every item in one pass unless they explicitly asked for a summary.',
+  '1. **Depth over breadth.** If the question has many parts: a one or two sentence overall read, then',
+  '   ONE requirement answered properly with a story, then the rest listed by name only, then the offer',
+  '   to continue. **Then stop writing.** No "detailed comparison" section afterwards, no ratings for the',
+  '   other items — listing them is the whole treatment they get this turn.',
+  '   **Choose the item you can answer with a story**, not necessarily the first one printed. Credential',
+  '   checks — years of experience, degree, location — carry no story; settle those in one clause inside',
+  '   the overall read and spend the depth on a substantive requirement.',
   '2. **Tell the story.** Name what he actually did, the decision he made, and how it turned out.',
   '   "Joe has experience with X" is not an answer — if the sentence would be true of any competent',
   '   candidate, replace it with the specific thing.',
@@ -152,8 +169,10 @@ const OUTPUT_REMINDER = [
   '   When a posting has a qualifications list as well as responsibilities, include it in the remaining',
   '   items, so a genuinely absent tool surfaces on its own rather than being hunted for.',
   '4. **Never print internal identifiers or field names.** Describe a story in plain language.',
-  '5. **Numbers are fine.** Years, headcounts, percentages, dates, counts — use them precisely. The',
-  '   restriction is money only. Never silently drop a non-financial number; that reads as an error.',
+  '5. **Write every non-money number in full.** "5 years", "~900 reps", "six channels", "83%". The only',
+  '   numbers you withhold are ones that denominate money. Emitting "–+ years" or " years in Revenue',
+  '   Operations" with the digits missing is a visible defect — if you are unsure, the number is not',
+  '   about money, so write it.',
   '6. **Markdown.** Bold what matters, bullets for lists, headings only when an answer has real sections.',
 ].join('\n');
 
